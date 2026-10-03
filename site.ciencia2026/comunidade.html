@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fórum da Comunidade - Conexão Global</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+
+        /* =========================================================
+           FÓRUM DA COMUNIDADE
+           ========================================================= */
+
+        .forum-page {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(99, 102, 241, 0.15), transparent 30%),
+                radial-gradient(circle at 85% 15%, rgba(14, 165, 233, 0.13), transparent 30%),
+                var(--bg-main);
+        }
+
+
+        /* =========================================================
+           HERO
+           ========================================================= */
+
+        .forum-hero {
+            position: relative;
+            overflow: hidden;
+
+            padding: 95px 20px 85px;
+
+            text-align: center;
+
+            background:
+                radial-gradient(circle at 20% 30%, rgba(236, 72, 153, 0.18), transparent 30%),
+                radial-gradient(circle at 80% 25%, rgba(14, 165, 233, 0.20), transparent 30%),
+                linear-gradient(135deg, #111827, #172554 55%, #0f172a);
+
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .forum-hero::before {
+            content: "💬";
+            position: absolute;
+            left: 9%;
+            top: 55px;
+            font-size: 4rem;
+            opacity: 0.08;
+            transform: rotate(-12deg);
+        }
+
+        .forum-hero::after {
+            content: "🌎";
+            position: absolute;
+            right: 10%;
+            bottom: 35px;
+            font-size: 4rem;
+            opacity: 0.08;
+            transform: rotate(12deg);
+        }
+
+        .forum-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 9px 16px;
+
+            border: 1px solid rgba(56, 189, 248, 0.45);
+            border-radius: 999px;
+
+            background: rgba(14, 165, 233, 0.08);
+
+            color: #38bdf8;
+
+            font-size: 0.82rem;
+            font-weight: 800;
+
+            letter-spacing: 0.03em;
+        }
+
+        .forum-hero h1 {
+            margin: 22px 0 12px;
+
+            font-size: clamp(2.3rem, 5vw, 4.3rem);
+            line-height: 1.05;
+            font-weight: 800;
+
+            background: linear-gradient(
+                90deg,
+                #ffffff,
+                #c4b5fd,
+                #67e8f9
+            );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .forum-hero p {
+            max-width: 760px;
+            margin: 0 auto;
+
+            color: #94a3b8;
+
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+           ÁREA PRINCIPAL
+           ========================================================= */
+
+        .forum-main {
+            max-width: 1180px;
+            margin: 0 auto;
+
+            padding: 55px 20px 90px;
+        }
+
+        .forum-layout {
+            display: grid;
+
+            grid-template-columns: minmax(0, 1fr) 300px;
+
+            gap: 24px;
+
+            align-items: start;
+        }
+
+
+        /* =========================================================
+           PAINEL PRINCIPAL
+           ========================================================= */
+
+        .forum-panel {
+            overflow: hidden;
+
+            background: rgba(30, 41, 59, 0.82);
+
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            border-radius: 22px;
+
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.25),
+                inset 0 1px rgba(255,255,255,0.04);
+
+            backdrop-filter: blur(12px);
+        }
+
+
+        /* =========================================================
+           CABEÇALHO DO FÓRUM
+           ========================================================= */
+
+        .forum-panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 18px 22px;
+
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+
+            background: rgba(15, 23, 42, 0.65);
+        }
+
+        .server-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .server-icon {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 12px;
+
+            background: linear-gradient(
+                135deg,
+                rgba(99,102,241,0.25),
+                rgba(14,165,233,0.2)
+            );
+
+            border: 1px solid rgba(99,102,241,0.25);
+
+            font-size: 1.25rem;
+        }
+
+        .server-name {
+            margin: 0;
+
+            color: #f8fafc;
+
+            font-size: 0.95rem;
+            font-weight: 800;
+        }
+
+        .server-status {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            margin-top: 3px;
+
+            color: #94a3b8;
+
+            font-size: 0.75rem;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+
+            border-radius: 50%;
+
+            background: #22c55e;
+
+            box-shadow: 0 0 10px rgba(34,197,94,0.65);
+        }
+
+        .message-counter {
+            padding: 8px 12px;
+
+            border-radius: 999px;
+
+            background: rgba(255,255,255,0.05);
+
+            color: #cbd5e1;
+
+            font-size: 0.78rem;
+            font-weight: 700;
+
+            white-space: nowrap;
+        }
+
+
+        /* =========================================================
+           ÁREA DE MENSAGENS
+           ========================================================= */
+
+        .forum-window {
+            height: 460px;
+
+            overflow-y: auto;
+
+            padding: 22px;
+
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(99,102,241,0.07),
+                    transparent 40%
+                ),
+                #0b1120;
+        }
+
+        .forum-window::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .forum-window::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .forum-window::-webkit-scrollbar-thumb {
+            background: rgba(148,163,184,0.2);
+            border-radius: 999px;
+        }
+
+        .forum-window::-webkit-scrollbar-thumb:hover {
+            background: rgba(148,163,184,0.35);
+        }
+
+
+        /* =========================================================
+           MENSAGEM DO SISTEMA
+           ========================================================= */
+
+        .system-message {
+            padding: 13px 15px;
+
+            border-radius: 12px;
+
+            background: rgba(16,185,129,0.08);
+
+            border: 1px solid rgba(16,185,129,0.15);
+
+            color: #a7f3d0;
+
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+
+        /* =========================================================
+           MENSAGEM DO USUÁRIO
+           ========================================================= */
+
+        .forum-message {
+            width: fit-content;
+            max-width: 85%;
+
+            padding: 13px 16px;
+
+            border-radius: 15px;
+            border-top-left-radius: 5px;
+
+            background: #1e293b;
+
+            border: 1px solid rgba(148,163,184,0.10);
+
+            box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+
+            animation: forumMessageIn 0.25s ease-out;
+        }
+
+        .forum-user {
+            display: block;
+
+            margin-bottom: 5px;
+
+            color: #60a5fa;
+
+            font-size: 0.78rem;
+            font-weight: 800;
+        }
+
+        .forum-text {
+            color: #e2e8f0;
+
+            font-size: 0.92rem;
+            line-height: 1.55;
+
+            word-break: break-word;
+        }
+
+        @keyframes forumMessageIn {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* =========================================================
+           ÁREA DE ENVIO
+           ========================================================= */
+
+        .forum-input-area {
+            padding: 18px;
+
+            border-top: 1px solid rgba(255,255,255,0.07);
+
+            background: rgba(15,23,42,0.72);
+        }
+
+        .forum-input-row {
+            display: grid;
+
+            grid-template-columns: 180px 1fr auto;
+
+            gap: 10px;
+        }
+
+        .forum-input {
+            width: 100%;
+
+            box-sizing: border-box;
+
+            padding: 13px 14px;
+
+            border: 1px solid rgba(148,163,184,0.17);
+            border-radius: 11px;
+
+            outline: none;
+
+            background: #111827;
+
+            color: #f8fafc;
+
+            font-family: inherit;
+            font-size: 0.88rem;
+
+            transition: 0.2s;
+        }
+
+        .forum-input::placeholder {
+            color: #64748b;
+        }
+
+        .forum-input:focus {
+            border-color: rgba(56,189,248,0.7);
+
+            box-shadow:
+                0 0 0 3px rgba(56,189,248,0.08);
+        }
+
+        .forum-send {
+            border: none;
+            border-radius: 11px;
+
+            padding: 0 20px;
+
+            background: linear-gradient(
+                135deg,
+                #6366f1,
+                #0ea5e9
+            );
+
+            color: white;
+
+            font-family: inherit;
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .forum-send:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 20px rgba(14,165,233,0.2);
+        }
+
+        .forum-help {
+            margin: 10px 2px 0;
+
+            color: #64748b;
+
+            font-size: 0.73rem;
+        }
+
+
+        /* =========================================================
+           PAINEL LATERAL
+           ========================================================= */
+
+        .forum-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .sidebar-card {
+            padding: 21px;
+
+            border-radius: 18px;
+
+            background: rgba(30,41,59,0.72);
+
+            border: 1px solid rgba(148,163,184,0.13);
+
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .sidebar-card h3 {
+            margin: 0 0 10px;
+
+            color: #f8fafc;
+
+            font-size: 1rem;
+        }
+
+        .sidebar-card p {
+            margin: 0;
+
+            color: #94a3b8;
+
+            font-size: 0.83rem;
+            line-height: 1.65;
+        }
+
+        .rules-list {
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+
+            margin: 15px 0 0;
+            padding: 0;
+
+            list-style: none;
+        }
+
+        .rules-list li {
+            display: flex;
+            gap: 9px;
+
+            color: #cbd5e1;
+
+            font-size: 0.8rem;
+            line-height: 1.5;
+        }
+
+        .rule-icon {
+            flex-shrink: 0;
+        }
+
+
+        /* =========================================================
+           DESTAQUE
+           ========================================================= */
+
+        .sidebar-highlight {
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(99,102,241,0.18),
+                    rgba(14,165,233,0.08)
+                );
+
+            border-color: rgba(99,102,241,0.22);
+        }
+
+        .highlight-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            margin-bottom: 10px;
+
+            color: #a5b4fc;
+
+            font-weight: 800;
+        }
+
+
+        /* =========================================================
+           ADMIN
+           ========================================================= */
+
+        .admin-area {
+            margin-top: 5px;
+
+            text-align: center;
+        }
+
+        .btn-clear {
+            padding: 8px 12px;
+
+            border: 1px solid rgba(248,113,113,0.2);
+            border-radius: 9px;
+
+            background: rgba(127,29,29,0.15);
+
+            color: #fca5a5;
+
+            font-family: inherit;
+            font-size: 0.72rem;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .btn-clear:hover {
+            background: rgba(127,29,29,0.3);
+        }
+
+
+        /* =========================================================
+           RESPONSIVIDADE
+           ========================================================= */
+
+        @media (max-width: 900px) {
+
+            .forum-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .forum-sidebar {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .forum-hero {
+                padding: 70px 18px 65px;
+            }
+
+            .forum-hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .forum-main {
+                padding: 35px 14px 60px;
+            }
+
+            .forum-panel-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .forum-window {
+                height: 420px;
+                padding: 15px;
+            }
+
+            .forum-input-row {
+                grid-template-columns: 1fr;
+            }
+
+            .forum-send {
+                min-height: 46px;
+            }
+
+            .forum-sidebar {
+                display: flex;
+            }
+
+            .forum-message {
+                max-width: 92%;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body class="forum-page">
+
+    <!-- =========================================================
+         MENU
+         ========================================================= -->
+
+    <header>
+
+        <div class="logo">
+            ✨ Conexão<span>Global</span> 🌍
+        </div>
+
+        <nav>
+
+    <a href="index.html">
+        Início
+    </a>
+
+    <a href="cultura.html">
+        Cultura & Sabores 🍲
+    </a>
+
+    <a href="acolhimento.html">
+        Guia de Acolhimento 🎒
+    </a>
+
+    <a href="comunidade.html" class="nav-btn">
+        Fórum da Comunidade 💬
+    </a>
+
+    <a href="experiencia.html" class="nav-btn">
+        🌎 E se fosse você?
+    </a>
+
+</nav>
+
+    </header>
+
+
+    <!-- =========================================================
+         HERO
+         ========================================================= -->
+
+    <section class="forum-hero">
+
+        <span class="forum-badge">
+            💬 FÓRUM DA COMUNIDADE
+        </span>
+
+        <h1>
+            Um espaço para conversar.
+        </h1>
+
+        <p>
+            Compartilhe experiências, faça perguntas, conte histórias
+            e conheça diferentes pontos de vista dentro da nossa escola.
+        </p>
+
+    </section>
+
+
+    <!-- =========================================================
+         CONTEÚDO
+         ========================================================= -->
+
+    <main class="forum-main">
+
+        <div class="forum-layout">
+
+
+            <!-- =================================================
+                 FÓRUM
+                 ================================================= -->
+
+            <section class="forum-panel">
+
+
+                <!-- Cabeçalho -->
+
+                <div class="forum-panel-header">
+
+                    <div class="server-info">
+
+                        <div class="server-icon">
+                            💬
+                        </div>
+
+                        <div>
+
+                            <p class="server-name">
+                                Conexão Global • Comunidade
+                            </p>
+
+                            <div class="server-status">
+
+                                <span class="status-dot"></span>
+
+                                Fórum aberto para participação
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="message-counter" id="messageCounter">
+                        💬 0 mensagens
+                    </div>
+
+                </div>
+
+
+                <!-- Janela -->
+
+                <div class="forum-window" id="forumWindow">
+
+                    <div class="system-message">
+
+                        <strong>🌎 Conexão Global:</strong>
+
+                        <br>
+
+                        Este é um espaço para trocar ideias e experiências.
+                        Respeite os outros participantes e aproveite para
+                        conhecer novas histórias!
+
+                    </div>
+
+                </div>
+
+
+                <!-- Área de envio -->
+
+                <div class="forum-input-area">
+
+                    <div class="forum-input-row">
+
+                        <input
+                            type="text"
+                            id="forumUserInput"
+                            class="forum-input"
+                            maxlength="40"
+                            placeholder="Seu nome ou turma..."
+                        >
+
+                        <input
+                            type="text"
+                            id="forumMsgInput"
+                            class="forum-input"
+                            maxlength="500"
+                            placeholder="Escreva uma mensagem para a comunidade..."
+                        >
+
+                        <button
+                            class="forum-send"
+                            id="btnEnviarForum"
+                            type="button"
+                        >
+                            Enviar 🚀
+                        </button>
+
+                    </div>
+
+                    <p class="forum-help">
+                        💡 Aperte <strong>Enter</strong> para enviar sua mensagem.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 LATERAL
+                 ================================================= -->
+
+            <aside class="forum-sidebar">
+
+
+                <!-- Sobre -->
+
+                <div class="sidebar-card sidebar-highlight">
+
+                    <div class="highlight-title">
+                        🌎 Sobre o espaço
+                    </div>
+
+                    <p>
+                        O fórum foi criado para aproximar estudantes,
+                        incentivar o diálogo e transformar experiências
+                        diferentes em oportunidades de aprendizado.
+                    </p>
+
+                </div>
+
+
+                <!-- O que compartilhar -->
+
+                <div class="sidebar-card">
+
+                    <h3>
+                        💡 O que posso compartilhar?
+                    </h3>
+
+                    <ul class="rules-list">
+
+                        <li>
+                            <span class="rule-icon">🌍</span>
+                            <span>
+                                Uma experiência sobre seu país ou cultura.
+                            </span>
+                        </li>
+
+                        <li>
+                            <span class="rule-icon">💬</span>
+                            <span>
+                                Uma dúvida sobre outra cultura.
+                            </span>
+                        </li>
+
+                        <li>
+                            <span class="rule-icon">🍲</span>
+                            <span>
+                                Uma comida ou tradição que você gosta.
+                            </span>
+                        </li>
+
+                        <li>
+                            <span class="rule-icon">🤝</span>
+                            <span>
+                                Uma ideia para tornar a escola mais acolhedora.
+                            </span>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- Regras -->
+
+                <div class="sidebar-card">
+
+                    <h3>
+                        🛡️ Regras do fórum
+                    </h3>
+
+                    <ul class="rules-list">
+
+                        <li>
+                            <span class="rule-icon">✅</span>
+                            <span>
+                                Respeite as experiências dos outros.
+                            </span>
+                        </li>
+
+                        <li>
+                            <span class="rule-icon">🚫</span>
+                            <span>
+                                Não faça comentários ofensivos ou preconceituosos.
+                            </span>
+                        </li>
+
+                        <li>
+                            <span class="rule-icon">🤝</span>
+                            <span>
+                                Use o espaço para conversar e aprender.
+                            </span>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- Administração -->
+
+                <div class="admin-area">
+
+                    <button
+                        class="btn-clear"
+                        type="button"
+                        onclick="limparConsoleSecreto()"
+                    >
+                        ⚙️ Área de moderação
+                    </button>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================================
+         RODAPÉ
+         ========================================================= -->
+
+    <footer>
+
+        <p>
+            ✨ Conexão Global 2026 - Central de Debates e Moderação Ativa. 🌍
+        </p>
+
+    </footer>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+         ========================================================= -->
+
+    <script>
+
+        const forumWindow =
+            document.getElementById("forumWindow");
+
+        const forumUserInput =
+            document.getElementById("forumUserInput");
+
+        const forumMsgInput =
+            document.getElementById("forumMsgInput");
+
+        const btnEnviarForum =
+            document.getElementById("btnEnviarForum");
+
+        const messageCounter =
+            document.getElementById("messageCounter");
+
+
+        const CHAVE_FORUM =
+            "robloxForumMessages";
+
+
+        /* =====================================================
+           CARREGAR MENSAGENS
+           ===================================================== */
+
+        function carregarMensagensForum() {
+
+            let mensagens = [];
+
+            try {
+
+                mensagens =
+                    JSON.parse(
+                        localStorage.getItem(CHAVE_FORUM)
+                    ) || [];
+
+            } catch {
+
+                mensagens = [];
+
+            }
+
+
+            mensagens.forEach(function(mensagem) {
+
+                adicionarNaTelaForum(
+                    mensagem.usuario,
+                    mensagem.texto
+                );
+
+            });
+
+
+            atualizarContador(mensagens.length);
+
+            rolarForumNoFim();
+
+        }
+
+
+        /* =====================================================
+           ADICIONAR MENSAGEM NA TELA
+           ===================================================== */
+
+        function adicionarNaTelaForum(usuario, texto) {
+
+            const novaLinha =
+                document.createElement("div");
+
+            novaLinha.className =
+                "forum-message";
+
+
+            const nome =
+                document.createElement("span");
+
+            nome.className =
+                "forum-user";
+
+            nome.textContent =
+                "@" + usuario;
+
+
+            const mensagem =
+                document.createElement("span");
+
+            mensagem.className =
+                "forum-text";
+
+            mensagem.textContent =
+                texto;
+
+
+            novaLinha.appendChild(nome);
+
+            novaLinha.appendChild(mensagem);
+
+            forumWindow.appendChild(novaLinha);
+
+        }
+
+
+        /* =====================================================
+           CONTADOR
+           ===================================================== */
+
+        function atualizarContador(total) {
+
+            if (total === 1) {
+
+                messageCounter.textContent =
+                    "💬 1 mensagem";
+
+            } else {
+
+                messageCounter.textContent =
+                    `💬 ${total} mensagens`;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           ROLAR PARA O FINAL
+           ===================================================== */
+
+        function rolarForumNoFim() {
+
+            forumWindow.scrollTop =
+                forumWindow.scrollHeight;
+
+        }
+
+
+        /* =====================================================
+           ENVIAR MENSAGEM
+           ===================================================== */
+
+        function enviarMensagemForum() {
+
+            const usuario =
+                forumUserInput.value.trim() ||
+                "Anônimo";
+
+
+            const texto =
+                forumMsgInput.value.trim();
+
+
+            if (texto === "") {
+
+                forumMsgInput.focus();
+
+                return;
+
+            }
+
+
+            adicionarNaTelaForum(
+                usuario,
+                texto
+            );
+
+
+            let mensagens = [];
+
+            try {
+
+                mensagens =
+                    JSON.parse(
+                        localStorage.getItem(CHAVE_FORUM)
+                    ) || [];
+
+            } catch {
+
+                mensagens = [];
+
+            }
+
+
+            mensagens.push({
+
+                usuario: usuario,
+
+                texto: texto
+
+            });
+
+
+            localStorage.setItem(
+
+                CHAVE_FORUM,
+
+                JSON.stringify(mensagens)
+
+            );
+
+
+            atualizarContador(
+                mensagens.length
+            );
+
+
+            forumMsgInput.value = "";
+
+            forumMsgInput.focus();
+
+
+            rolarForumNoFim();
+
+        }
+
+
+        /* =====================================================
+           ENTER PARA ENVIAR
+           ===================================================== */
+
+        btnEnviarForum.addEventListener(
+            "click",
+            enviarMensagemForum
+        );
+
+
+        forumMsgInput.addEventListener(
+            "keypress",
+            function(event) {
+
+                if (event.key === "Enter") {
+
+                    enviarMensagemForum();
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           MODERAÇÃO
+           ===================================================== */
+
+        function limparConsoleSecreto() {
+
+            const confirmar =
+                confirm(
+                    "Deseja apagar todas as mensagens do fórum neste navegador?"
+                );
+
+
+            if (!confirmar) {
+
+                return;
+
+            }
+
+
+            const senha =
+                prompt(
+                    "Digite a senha de administrador:"
+                );
+
+
+            if (senha === "ciencia2026") {
+
+                localStorage.removeItem(
+                    CHAVE_FORUM
+                );
+
+
+                forumWindow.innerHTML = `
+
+                    <div class="system-message">
+
+                        <strong>🛡️ Sistema:</strong>
+
+                        <br>
+
+                        O histórico do fórum foi
+                        limpo pelo administrador.
+
+                    </div>
+
+                `;
+
+
+                atualizarContador(0);
+
+
+                alert(
+                    "Mensagens apagadas com sucesso!"
+                );
+
+            }
+
+            else if (senha !== null) {
+
+                alert(
+                    "Senha incorreta!"
+                );
+
+            }
+
+        }
+
+
+        /* =====================================================
+           INICIAR
+           ===================================================== */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function() {
+
+                carregarMensagensForum();
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1987 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Guia de Acolhimento - Conexão Global
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =====================================================
+           PÁGINA
+           ===================================================== */
+
+        .acolhimento-page {
+
+            overflow-x: hidden;
+
+            overflow-y: auto;
+
+        }
+
+
+        /* =====================================================
+           HERO
+           ===================================================== */
+
+        .acolhimento-hero {
+
+            position: relative;
+
+            min-height: 440px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 80px 20px;
+
+            overflow: hidden;
+
+            background:
+
+                radial-gradient(
+                    circle at 15% 25%,
+                    rgba(16, 185, 129, 0.20),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 85% 20%,
+                    rgba(14, 165, 233, 0.18),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 50% 100%,
+                    rgba(99, 102, 241, 0.18),
+                    transparent 40%
+                ),
+
+                #0f172a;
+
+            border-bottom:
+                1px solid rgba(148, 163, 184, 0.08);
+
+        }
+
+
+        .acolhimento-hero::before {
+
+            content: "🎒";
+
+            position: absolute;
+
+            left: 10%;
+
+            top: 80px;
+
+            font-size: 4rem;
+
+            opacity: 0.12;
+
+            transform: rotate(-12deg);
+
+        }
+
+
+        .acolhimento-hero::after {
+
+            content: "🤝";
+
+            position: absolute;
+
+            right: 10%;
+
+            bottom: 65px;
+
+            font-size: 4rem;
+
+            opacity: 0.12;
+
+            transform: rotate(10deg);
+
+        }
+
+
+        .acolhimento-hero-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 850px;
+
+        }
+
+
+        .acolhimento-kicker {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            padding: 8px 15px;
+
+            margin-bottom: 20px;
+
+            border:
+                1px solid rgba(52, 211, 153, 0.35);
+
+            border-radius: 999px;
+
+            background:
+                rgba(16, 185, 129, 0.08);
+
+            color: #6ee7b7;
+
+            font-size: 0.78rem;
+
+            font-weight: 800;
+
+            letter-spacing: 0.4px;
+
+        }
+
+
+        .acolhimento-hero h1 {
+
+            margin-bottom: 18px;
+
+            font-size:
+                clamp(2.5rem, 6vw, 4.5rem);
+
+            line-height: 1.05;
+
+            letter-spacing: -2px;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    #ffffff,
+                    #a7f3d0,
+                    #7dd3fc
+                );
+
+            -webkit-background-clip: text;
+
+            background-clip: text;
+
+            color: transparent;
+
+        }
+
+
+        .acolhimento-hero p {
+
+            max-width: 720px;
+
+            margin: 0 auto;
+
+            color: #94a3b8;
+
+            font-size: 1rem;
+
+            line-height: 1.7;
+
+        }
+
+
+        .hero-tags {
+
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+            margin-top: 28px;
+
+        }
+
+
+        .hero-tag {
+
+            padding: 8px 13px;
+
+            border:
+                1px solid rgba(148, 163, 184, 0.12);
+
+            border-radius: 999px;
+
+            background:
+                rgba(30, 41, 59, 0.65);
+
+            color: #cbd5e1;
+
+            font-size: 0.75rem;
+
+            font-weight: 700;
+
+        }
+
+
+        /* =====================================================
+           INTRO
+           ===================================================== */
+
+        .acolhimento-intro {
+
+            padding: 65px 0 35px;
+
+            text-align: center;
+
+        }
+
+
+        .acolhimento-intro h2 {
+
+            margin-bottom: 12px;
+
+            font-size: 1.9rem;
+
+            letter-spacing: -0.7px;
+
+        }
+
+
+        .acolhimento-intro p {
+
+            max-width: 720px;
+
+            margin: 0 auto;
+
+            color: #94a3b8;
+
+            font-size: 0.92rem;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* =====================================================
+           GRID PRINCIPAL
+           ===================================================== */
+
+        .acolhimento-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 22px;
+
+            padding-bottom: 70px;
+
+        }
+
+
+        /* =====================================================
+           CARDS
+           ===================================================== */
+
+        .acolhimento-card {
+
+            position: relative;
+
+            padding: 27px;
+
+            border:
+                1px solid rgba(148, 163, 184, 0.12);
+
+            border-radius: 22px;
+
+            background:
+
+                linear-gradient(
+                    145deg,
+                    #202c40,
+                    #172235
+                );
+
+            box-shadow:
+                0 18px 40px rgba(0, 0, 0, 0.18);
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
+
+        }
+
+
+        .acolhimento-card:hover {
+
+            transform: translateY(-5px);
+
+            border-color:
+                rgba(99, 102, 241, 0.30);
+
+            box-shadow:
+                0 25px 50px rgba(0, 0, 0, 0.25);
+
+        }
+
+
+        .card-icon {
+
+            width: 58px;
+
+            height: 58px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin-bottom: 18px;
+
+            border-radius: 17px;
+
+            background:
+                rgba(99, 102, 241, 0.10);
+
+            border:
+                1px solid rgba(99, 102, 241, 0.15);
+
+            font-size: 1.8rem;
+
+        }
+
+
+        .acolhimento-card h3 {
+
+            margin-bottom: 10px;
+
+            color: #f8fafc;
+
+            font-size: 1.25rem;
+
+            letter-spacing: -0.4px;
+
+        }
+
+
+        .acolhimento-card > p {
+
+            margin-bottom: 17px;
+
+            color: #94a3b8;
+
+            font-size: 0.86rem;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* =====================================================
+           LISTAS
+           ===================================================== */
+
+        .info-list {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 11px;
+
+            margin: 0;
+
+            padding: 0;
+
+            list-style: none;
+
+        }
+
+
+        .info-list li {
+
+            position: relative;
+
+            padding-left: 27px;
+
+            color: #cbd5e1;
+
+            font-size: 0.83rem;
+
+            line-height: 1.55;
+
+        }
+
+
+        .info-list li::before {
+
+            content: "✓";
+
+            position: absolute;
+
+            left: 0;
+
+            top: 0;
+
+            width: 19px;
+
+            height: 19px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                rgba(16, 185, 129, 0.12);
+
+            color: #34d399;
+
+            font-size: 0.68rem;
+
+            font-weight: 900;
+
+        }
+
+
+        /* =====================================================
+           PRIMEIROS PASSOS
+           ===================================================== */
+
+        .passos-section {
+
+            padding: 70px 0;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #111c2d,
+                    #0f172a
+                );
+
+            border-top:
+                1px solid rgba(148, 163, 184, 0.06);
+
+            border-bottom:
+                1px solid rgba(148, 163, 184, 0.06);
+
+        }
+
+
+        .section-title {
+
+            text-align: center;
+
+            margin-bottom: 35px;
+
+        }
+
+
+        .section-title span {
+
+            display: inline-block;
+
+            margin-bottom: 9px;
+
+            color: #38bdf8;
+
+            font-size: 0.72rem;
+
+            font-weight: 800;
+
+            letter-spacing: 0.8px;
+
+        }
+
+
+        .section-title h2 {
+
+            margin-bottom: 9px;
+
+            font-size: 1.9rem;
+
+            letter-spacing: -0.7px;
+
+        }
+
+
+        .section-title p {
+
+            max-width: 650px;
+
+            margin: 0 auto;
+
+            color: #94a3b8;
+
+            font-size: 0.86rem;
+
+            line-height: 1.6;
+
+        }
+
+
+        .passos-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 16px;
+
+        }
+
+
+        .passo {
+
+            padding: 23px;
+
+            border:
+                1px solid rgba(148, 163, 184, 0.10);
+
+            border-radius: 18px;
+
+            background:
+                rgba(30, 41, 59, 0.62);
+
+        }
+
+
+        .passo-numero {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            width: 34px;
+
+            height: 34px;
+
+            margin-bottom: 16px;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6366f1,
+                    #0ea5e9
+                );
+
+            color: white;
+
+            font-size: 0.75rem;
+
+            font-weight: 800;
+
+        }
+
+
+        .passo h3 {
+
+            margin-bottom: 8px;
+
+            color: #f8fafc;
+
+            font-size: 0.98rem;
+
+        }
+
+
+        .passo p {
+
+            color: #94a3b8;
+
+            font-size: 0.78rem;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* =====================================================
+           FRASES ÚTEIS
+           ===================================================== */
+
+        .frases-section {
+
+            padding: 70px 0;
+
+        }
+
+
+        .frases-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 17px;
+
+        }
+
+
+        .frase {
+
+            padding: 21px;
+
+            border-radius: 17px;
+
+            background:
+                #172235;
+
+            border:
+                1px solid rgba(148, 163, 184, 0.10);
+
+        }
+
+
+        .frase-portugues {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #f8fafc;
+
+            font-size: 0.9rem;
+
+            font-weight: 700;
+
+        }
+
+
+        .frase-explicacao {
+
+            color: #64748b;
+
+            font-size: 0.74rem;
+
+            line-height: 1.5;
+
+        }
+
+
+        /* =====================================================
+           AJUDA
+           ===================================================== */
+
+        .ajuda-section {
+
+            padding: 70px 0;
+
+            background:
+
+                radial-gradient(
+                    circle at 15% 50%,
+                    rgba(16, 185, 129, 0.09),
+                    transparent 30%
+                ),
+
+                #0d1626;
+
+        }
+
+
+        .ajuda-box {
+
+            max-width: 900px;
+
+            margin: 0 auto;
+
+            padding: 32px;
+
+            border:
+                1px solid rgba(52, 211, 153, 0.15);
+
+            border-radius: 24px;
+
+            background:
+                rgba(16, 185, 129, 0.035);
+
+        }
+
+
+        .ajuda-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 16px;
+
+            margin-top: 25px;
+
+        }
+
+
+        .ajuda-item {
+
+            padding: 20px;
+
+            border-radius: 15px;
+
+            background:
+                rgba(15, 23, 42, 0.65);
+
+            border:
+                1px solid rgba(148, 163, 184, 0.08);
+
+        }
+
+
+        .ajuda-item strong {
+
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #f8fafc;
+
+            font-size: 0.88rem;
+
+        }
+
+
+        .ajuda-item p {
+
+            color: #94a3b8;
+
+            font-size: 0.76rem;
+
+            line-height: 1.55;
+
+        }
+
+
+        /* =====================================================
+           FAQ
+           ===================================================== */
+
+        .faq-section {
+
+            padding: 70px 0;
+
+        }
+
+
+        .faq-list {
+
+            max-width: 850px;
+
+            margin: 0 auto;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+
+        }
+
+
+        .faq-item {
+
+            padding: 20px 22px;
+
+            border:
+                1px solid rgba(148, 163, 184, 0.10);
+
+            border-radius: 16px;
+
+            background:
+                #172235;
+
+        }
+
+
+        .faq-item h3 {
+
+            margin-bottom: 8px;
+
+            color: #f8fafc;
+
+            font-size: 0.9rem;
+
+        }
+
+
+        .faq-item p {
+
+            color: #94a3b8;
+
+            font-size: 0.79rem;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* =====================================================
+           MENSAGEM FINAL
+           ===================================================== */
+
+        .acolhimento-final {
+
+            padding: 85px 20px;
+
+            text-align: center;
+
+            background:
+
+                radial-gradient(
+                    circle at 50% 100%,
+                    rgba(14, 165, 233, 0.12),
+                    transparent 45%
+                ),
+
+                #0f172a;
+
+        }
+
+
+        .acolhimento-final-icon {
+
+            font-size: 2.8rem;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .acolhimento-final h2 {
+
+            margin-bottom: 12px;
+
+            font-size: 2rem;
+
+        }
+
+
+        .acolhimento-final p {
+
+            max-width: 650px;
+
+            margin: 0 auto 25px;
+
+            color: #94a3b8;
+
+            font-size: 0.9rem;
+
+            line-height: 1.7;
+
+        }
+
+
+        .final-button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            padding: 12px 20px;
+
+            border-radius: 999px;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #6366f1,
+                    #0ea5e9
+                );
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 0.82rem;
+
+            font-weight: 800;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+
+        }
+
+
+        .final-button:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 28px rgba(99, 102, 241, 0.25);
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVO
+           ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .passos-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+
+            .frases-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+
+            .ajuda-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+        }
+
+
+        @media (max-width: 720px) {
+
+            .acolhimento-hero {
+
+                min-height: 400px;
+
+                padding:
+                    65px 20px 70px;
+
+            }
+
+
+            .acolhimento-hero h1 {
+
+                font-size: 2.7rem;
+
+            }
+
+
+            .acolhimento-hero::before,
+            .acolhimento-hero::after {
+
+                display: none;
+
+            }
+
+
+            .acolhimento-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .passos-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .frases-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .ajuda-box {
+
+                padding: 22px;
+
+            }
+
+        }
+
+
+        @media (max-width: 480px) {
+
+            .acolhimento-hero h1 {
+
+                font-size: 2.25rem;
+
+            }
+
+
+            .acolhimento-hero p {
+
+                font-size: 0.88rem;
+
+            }
+
+
+            .hero-tags {
+
+                flex-direction: column;
+
+                align-items: center;
+
+            }
+
+
+            .acolhimento-card {
+
+                padding: 22px;
+
+            }
+
+
+            .section-title h2 {
+
+                font-size: 1.6rem;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body class="acolhimento-page">
+
+
+    <!-- =====================================================
+         MENU
+         ===================================================== -->
+
+    <header>
+
+        <div class="logo">
+
+            ✨ Conexão<span>Global</span> 🌍
+
+        </div>
+
+
+        <nav>
+
+    <a href="index.html">
+        Início
+    </a>
+
+    <a href="cultura.html">
+        Cultura & Sabores 🍲
+    </a>
+
+    <a href="acolhimento.html">
+        Guia de Acolhimento 🎒
+    </a>
+
+    <a
+        href="comunidade.html"
+        class="nav-btn"
+    >
+        Fórum da Comunidade 💬
+    </a>
+
+    <a
+        href="experiencia.html"
+        class="nav-btn"
+    >
+        🌎 E se fosse você?
+    </a>
+
+</nav>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
+    <section class="acolhimento-hero">
+
+        <div class="acolhimento-hero-content">
+
+            <span class="acolhimento-kicker">
+                🎒 ACOLHIMENTO & SUPORTE
+            </span>
+
+
+            <h1>
+                Guia de Acolhimento
+            </h1>
+
+
+            <p>
+                Chegar a uma escola nova pode trazer muitas dúvidas.
+                Este espaço reúne informações simples para ajudar
+                estudantes de outros países a entender a rotina,
+                conhecer pessoas e se sentir parte da comunidade.
+            </p>
+
+
+            <div class="hero-tags">
+
+                <span class="hero-tag">
+                    🏫 Vida escolar
+                </span>
+
+                <span class="hero-tag">
+                    🗣️ Português
+                </span>
+
+                <span class="hero-tag">
+                    🤝 Amizades
+                </span>
+
+                <span class="hero-tag">
+                    💬 Comunicação
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         INTRO
+         ===================================================== -->
+
+    <section class="acolhimento-intro">
+
+        <div class="container">
+
+            <h2>
+                🌎 Ninguém precisa chegar sabendo tudo
+            </h2>
+
+
+            <p>
+                Cada escola possui sua própria rotina. Por isso,
+                este guia não pretende substituir as orientações
+                da escola, mas servir como um primeiro ponto de apoio
+                para quem está conhecendo um ambiente novo.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CARDS PRINCIPAIS
+         ===================================================== -->
+
+    <main class="container">
+
+        <div class="acolhimento-grid">
+
+
+            <!-- CARD 1 -->
+
+            <article class="acolhimento-card">
+
+                <div class="card-icon">
+                    🏫
+                </div>
+
+
+                <h3>
+                    Entendendo a escola
+                </h3>
+
+
+                <p>
+                    Nos primeiros dias, algumas coisas podem parecer
+                    diferentes. Perguntar faz parte do processo.
+                </p>
+
+
+                <ul class="info-list">
+
+                    <li>
+                        Descubra onde ficam as salas, biblioteca,
+                        secretaria e outros espaços.
+                    </li>
+
+                    <li>
+                        Pergunte como funcionam horários,
+                        intervalos e mudanças de sala.
+                    </li>
+
+                    <li>
+                        Observe como os alunos costumam organizar
+                        trabalhos e atividades.
+                    </li>
+
+                    <li>
+                        Quando tiver dúvida, procure um professor
+                        ou funcionário da escola.
+                    </li>
+
+                </ul>
+
+            </article>
+
+
+
+            <!-- CARD 2 -->
+
+            <article class="acolhimento-card">
+
+                <div class="card-icon">
+                    🗣️
+                </div>
+
+
+                <h3>
+                    Aprendendo o português
+                </h3>
+
+
+                <p>
+                    Não é necessário falar português perfeitamente
+                    para começar a conversar e participar.
+                </p>
+
+
+                <ul class="info-list">
+
+                    <li>
+                        Peça para a pessoa repetir quando não entender.
+                    </li>
+
+                    <li>
+                        Anote palavras novas que aparecem durante
+                        as aulas.
+                    </li>
+
+                    <li>
+                        Não tenha vergonha de perguntar o significado
+                        de uma expressão.
+                    </li>
+
+                    <li>
+                        Conversar com colegas também pode ajudar
+                        na prática do idioma.
+                    </li>
+
+                </ul>
+
+            </article>
+
+
+
+            <!-- CARD 3 -->
+
+            <article class="acolhimento-card">
+
+                <div class="card-icon">
+                    🤝
+                </div>
+
+
+                <h3>
+                    Fazendo amizades
+                </h3>
+
+
+                <p>
+                    Participar das atividades da turma pode ser uma
+                    maneira natural de conhecer novas pessoas.
+                </p>
+
+
+                <ul class="info-list">
+
+                    <li>
+                        Entre em grupos de trabalhos e atividades.
+                    </li>
+
+                    <li>
+                        Converse durante o intervalo quando se sentir
+                        confortável.
+                    </li>
+
+                    <li>
+                        Compartilhe algo da sua própria cultura.
+                    </li>
+
+                    <li>
+                        Respeite os costumes e diferenças de cada pessoa.
+                    </li>
+
+                </ul>
+
+            </article>
+
+
+
+            <!-- CARD 4 -->
+
+            <article class="acolhimento-card">
+
+                <div class="card-icon">
+                    📚
+                </div>
+
+
+                <h3>
+                    Estudos e atividades
+                </h3>
+
+
+                <p>
+                    Se uma matéria estiver difícil por causa do idioma
+                    ou do conteúdo, pedir ajuda pode facilitar bastante.
+                </p>
+
+
+                <ul class="info-list">
+
+                    <li>
+                        Pergunte ao professor quando não entender uma
+                        explicação ou atividade.
+                    </li>
+
+                    <li>
+                        Combine grupos de estudo com colegas.
+                    </li>
+
+                    <li>
+                        Use materiais de apoio para aprender palavras
+                        específicas de cada matéria.
+                    </li>
+
+                    <li>
+                        Organize provas, trabalhos e prazos em um lugar.
+                    </li>
+
+                </ul>
+
+            </article>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         PRIMEIROS PASSOS
+         ===================================================== -->
+
+    <section class="passos-section">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <span>
+                    🧭 PRIMEIROS DIAS
+                </span>
+
+
+                <h2>
+                    Um começo pode ser mais simples
+                </h2>
+
+
+                <p>
+                    Algumas pequenas atitudes podem ajudar bastante
+                    durante os primeiros dias em uma escola nova.
+                </p>
+
+            </div>
+
+
+            <div class="passos-grid">
+
+
+                <div class="passo">
+
+                    <span class="passo-numero">
+                        01
+                    </span>
+
+
+                    <h3>
+                        Conheça o espaço
+                    </h3>
+
+
+                    <p>
+                        Descubra onde ficam os principais ambientes
+                        da escola e quem pode ajudar quando surgir
+                        alguma dúvida.
+                    </p>
+
+                </div>
+
+
+
+                <div class="passo">
+
+                    <span class="passo-numero">
+                        02
+                    </span>
+
+
+                    <h3>
+                        Converse
+                    </h3>
+
+
+                    <p>
+                        Mesmo que o português ainda não esteja perfeito,
+                        tente participar de pequenas conversas.
+                    </p>
+
+                </div>
+
+
+
+                <div class="passo">
+
+                    <span class="passo-numero">
+                        03
+                    </span>
+
+
+                    <h3>
+                        Participe
+                    </h3>
+
+
+                    <p>
+                        Trabalhos em grupo, esportes e atividades
+                        escolares podem ajudar na integração.
+                    </p>
+
+                </div>
+
+
+
+                <div class="passo">
+
+                    <span class="passo-numero">
+                        04
+                    </span>
+
+
+                    <h3>
+                        Compartilhe
+                    </h3>
+
+
+                    <p>
+                        Sua cultura também faz parte da escola.
+                        Conte sobre sua comida, música, idioma ou tradições.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FRASES ÚTEIS
+         ===================================================== -->
+
+    <section class="frases-section">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <span>
+                    🗣️ COMUNICAÇÃO
+                </span>
+
+
+                <h2>
+                    Frases que podem ajudar
+                </h2>
+
+
+                <p>
+                    Algumas frases simples podem facilitar a comunicação
+                    durante as primeiras conversas.
+                </p>
+
+            </div>
+
+
+            <div class="frases-grid">
+
+
+                <div class="frase">
+
+                    <span class="frase-portugues">
+                        "Pode repetir, por favor?"
+                    </span>
+
+
+                    <span class="frase-explicacao">
+                        Use quando não conseguir entender o que foi falado.
+                    </span>
+
+                </div>
+
+
+
+                <div class="frase">
+
+                    <span class="frase-portugues">
+                        "O que isso significa?"
+                    </span>
+
+
+                    <span class="frase-explicacao">
+                        Uma forma simples de perguntar sobre uma palavra
+                        ou expressão desconhecida.
+                    </span>
+
+                </div>
+
+
+
+                <div class="frase">
+
+                    <span class="frase-portugues">
+                        "Você pode me ajudar?"
+                    </span>
+
+
+                    <span class="frase-explicacao">
+                        Pedir ajuda é uma parte normal do processo de adaptação.
+                    </span>
+
+                </div>
+
+
+
+                <div class="frase">
+
+                    <span class="frase-portugues">
+                        "Como funciona essa atividade?"
+                    </span>
+
+
+                    <span class="frase-explicacao">
+                        Pode ser usada quando uma tarefa ou dinâmica
+                        da aula não estiver clara.
+                    </span>
+
+                </div>
+
+
+
+                <div class="frase">
+
+                    <span class="frase-portugues">
+                        "Como se fala isso em português?"
+                    </span>
+
+
+                    <span class="frase-explicacao">
+                        Uma maneira prática de aprender novas palavras
+                        conversando com colegas.
+                    </span>
+
+                </div>
+
+
+
+                <div class="frase">
+
+                    <span class="frase-portugues">
+                        "Posso participar?"
+                    </span>
+
+
+                    <span class="frase-explicacao">
+                        Uma frase simples para entrar em uma conversa,
+                        grupo ou atividade.
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         APLICATIVOS + APOIO
+         ===================================================== -->
+
+    <section class="ajuda-section">
+
+        <div class="container">
+
+            <div class="ajuda-box">
+
+                <div class="section-title">
+
+                    <span>
+                        🧰 FERRAMENTAS & APOIO
+                    </span>
+
+
+                    <h2>
+                        Onde encontrar ajuda?
+                    </h2>
+
+
+                    <p>
+                        Ninguém precisa resolver tudo sozinho.
+                        Existem diferentes formas de buscar apoio
+                        dentro e fora da sala de aula.
+                    </p>
+
+                </div>
+
+
+                <div class="ajuda-grid">
+
+
+                    <div class="ajuda-item">
+
+                        <strong>
+                            👨‍🏫 Professor
+                        </strong>
+
+
+                        <p>
+                            Pode ajudar com conteúdos, atividades,
+                            trabalhos e dúvidas relacionadas às aulas.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="ajuda-item">
+
+                        <strong>
+                            🏫 Secretaria / Coordenação
+                        </strong>
+
+
+                        <p>
+                            Pode orientar sobre questões da escola,
+                            horários, documentos e outros procedimentos.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="ajuda-item">
+
+                        <strong>
+                            🤝 Colegas
+                        </strong>
+
+
+                        <p>
+                            Podem ajudar a entender expressões,
+                            atividades, espaços e costumes do dia a dia.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="ajuda-item">
+
+                        <strong>
+                            📱 Google Tradutor
+                        </strong>
+
+
+                        <p>
+                            Pode auxiliar na tradução de textos,
+                            palavras e imagens durante o aprendizado.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="ajuda-item">
+
+                        <strong>
+                            📖 Dicionários
+                        </strong>
+
+
+                        <p>
+                            Consultar o significado de palavras novas
+                            ajuda a aumentar o vocabulário aos poucos.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="ajuda-item">
+
+                        <strong>
+                            💬 Comunidade
+                        </strong>
+
+
+                        <p>
+                            O Fórum da Conexão Global pode ser usado
+                            para compartilhar experiências e conversar.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FAQ
+         ===================================================== -->
+
+    <section class="faq-section">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <span>
+                    ❓ DÚVIDAS COMUNS
+                </span>
+
+
+                <h2>
+                    Perguntas que podem surgir
+                </h2>
+
+
+                <p>
+                    Algumas situações são comuns para quem está
+                    conhecendo uma nova escola.
+                </p>
+
+            </div>
+
+
+            <div class="faq-list">
+
+
+                <div class="faq-item">
+
+                    <h3>
+                        "E se eu não entender o professor?"
+                    </h3>
+
+
+                    <p>
+                        Você pode pedir para ele repetir ou explicar
+                        novamente. Também pode anotar a dúvida e
+                        conversar depois da aula.
+                    </p>
+
+                </div>
+
+
+
+                <div class="faq-item">
+
+                    <h3>
+                        "E se eu tiver vergonha de falar português?"
+                    </h3>
+
+
+                    <p>
+                        É normal sentir insegurança ao aprender um
+                        idioma. Começar com frases simples e conversar
+                        aos poucos pode tornar a prática mais natural.
+                    </p>
+
+                </div>
+
+
+
+                <div class="faq-item">
+
+                    <h3>
+                        "Preciso esconder minha cultura para me adaptar?"
+                    </h3>
+
+
+                    <p>
+                        Não. Conhecer a cultura local e compartilhar
+                        a própria cultura podem acontecer ao mesmo tempo.
+                    </p>
+
+                </div>
+
+
+
+                <div class="faq-item">
+
+                    <h3>
+                        "O que fazer se eu me sentir excluído?"
+                    </h3>
+
+
+                    <p>
+                        Procure alguém de confiança na escola, como
+                        um professor, funcionário ou colega, e explique
+                        o que está acontecendo. Pedir ajuda é importante.
+                    </p>
+
+                </div>
+
+
+
+                <div class="faq-item">
+
+                    <h3>
+                        "Posso ensinar algo sobre meu país?"
+                    </h3>
+
+
+                    <p>
+                        Claro. Compartilhar receitas, músicas, histórias,
+                        expressões e costumes pode ajudar toda a turma
+                        a conhecer outras culturas.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         MENSAGEM FINAL
+         ===================================================== -->
+
+    <section class="acolhimento-final">
+
+        <div class="acolhimento-final-icon">
+            🌎
+        </div>
+
+
+        <h2>
+            Acolher também é conhecer
+        </h2>
+
+
+        <p>
+            Uma escola mais acolhedora não é construída apenas por
+            quem chega. Ela também depende de quem já está aqui.
+            Cada conversa, amizade e troca de experiências pode
+            transformar a maneira como diferentes culturas convivem.
+        </p>
+
+
+        <a
+            href="comunidade.html"
+            class="final-button"
+        >
+            💬 Participar da Comunidade
+        </a>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer>
+
+        <p>
+            ✨ Conexão Global 2026 - Construindo laços de empatia. 🌍
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
