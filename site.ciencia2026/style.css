@@ -2617,3 +2617,588 @@ footer {
     }
 
 }
+
+/* =========================================================
+   PROGRESSO DA EXPERIÊNCIA
+   ========================================================= */
+
+.experiencia-progresso {
+    position: relative;
+    z-index: 1;
+
+    max-width: 620px;
+
+    margin: 0 auto 28px;
+
+    padding: 18px 20px;
+
+    text-align: left;
+
+    background:
+        rgba(15, 23, 42, 0.58);
+
+    border:
+        1px solid rgba(148, 163, 184, 0.12);
+
+    border-radius: 18px;
+}
+
+.progresso-topo {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 13px;
+}
+
+.progresso-topo > div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+.progresso-label {
+    color: #818cf8;
+
+    font-size: 0.68rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+}
+
+.progresso-topo strong {
+    color: var(--text-main);
+
+    font-size: 0.88rem;
+}
+
+.progresso-porcentagem {
+    color: #7dd3fc;
+
+    font-size: 0.85rem;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   BARRA
+   ========================================================= */
+
+.progresso-barra {
+    width: 100%;
+
+    height: 8px;
+
+    margin-bottom: 16px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background:
+        rgba(51, 65, 85, 0.65);
+}
+
+.progresso-barra-preenchida {
+    width: 0%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    transition:
+        width 0.45s ease;
+}
+
+
+/* =========================================================
+   LISTA DE PROGRESSO
+   ========================================================= */
+
+.progresso-lista {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 8px;
+}
+
+.progresso-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 8px 10px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(51, 65, 85, 0.28);
+
+    color: #64748b;
+
+    font-size: 0.75rem;
+
+    font-weight: 700;
+
+    transition:
+        color 0.25s ease,
+        background 0.25s ease;
+}
+
+.progresso-status {
+    font-size: 0.78rem;
+}
+
+.progresso-item.concluido {
+    background:
+        rgba(16, 185, 129, 0.08);
+
+    color: #a7f3d0;
+}
+
+
+/* =========================================================
+   FINAL GERAL
+   ========================================================= */
+
+.final-geral-icon {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 82px;
+    height: 82px;
+
+    margin: 0 auto 20px;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(99, 102, 241, 0.15),
+            rgba(14, 165, 233, 0.12)
+        );
+
+    border:
+        1px solid rgba(99, 102, 241, 0.18);
+
+    font-size: 2.2rem;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.16);
+}
+
+.final-geral-texto {
+    position: relative;
+    z-index: 1;
+
+    max-width: 620px;
+
+    margin: 25px auto 28px;
+
+    text-align: left;
+}
+
+.final-geral-texto p {
+    margin-bottom: 15px;
+
+    color: #cbd5e1;
+
+    font-size: 0.92rem;
+
+    line-height: 1.7;
+}
+
+.final-geral-destaque {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    margin: 22px 0;
+
+    padding: 18px 20px;
+
+    border-left:
+        3px solid var(--secondary);
+
+    border-radius: 0 14px 14px 0;
+
+    background:
+        rgba(14, 165, 233, 0.07);
+}
+
+.final-geral-destaque strong {
+    color: var(--text-main);
+
+    font-size: 0.9rem;
+
+    line-height: 1.5;
+}
+
+.final-geral-destaque span {
+    color: var(--text-muted);
+
+    font-size: 0.84rem;
+
+    line-height: 1.5;
+}
+
+.final-geral-frase {
+    margin: 24px 0;
+
+    text-align: center;
+
+    color: #c7d2fe;
+
+    font-size: 1rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+}
+
+.final-geral-pergunta {
+    margin-bottom: 0 !important;
+
+    text-align: center;
+
+    color: #7dd3fc !important;
+
+    font-size: 1rem !important;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   PROGRESSO — CELULAR
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .experiencia-progresso {
+        padding:
+            15px;
+
+        margin-bottom:
+            22px;
+
+        border-radius:
+            15px;
+    }
+
+    .progresso-topo {
+        align-items:
+            flex-start;
+    }
+
+    .progresso-topo strong {
+        font-size:
+            0.8rem;
+    }
+
+    .progresso-label {
+        font-size:
+            0.62rem;
+    }
+
+    .progresso-porcentagem {
+        font-size:
+            0.78rem;
+    }
+
+    .progresso-lista {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            6px;
+    }
+
+    .progresso-item {
+        padding:
+            7px 9px;
+
+        font-size:
+            0.72rem;
+    }
+
+
+    /* Final geral */
+
+    .final-geral-icon {
+        width:
+            68px;
+
+        height:
+            68px;
+
+        margin-bottom:
+            17px;
+
+        border-radius:
+            20px;
+
+        font-size:
+            1.8rem;
+    }
+
+    .final-geral-texto {
+        margin-top:
+            20px;
+    }
+
+    .final-geral-texto p {
+        font-size:
+            0.84rem;
+
+        line-height:
+            1.6;
+
+        margin-bottom:
+            13px;
+    }
+
+    .final-geral-destaque {
+        margin:
+            18px 0;
+
+        padding:
+            15px;
+    }
+
+    .final-geral-destaque strong {
+        font-size:
+            0.84rem;
+    }
+
+    .final-geral-destaque span {
+        font-size:
+            0.78rem;
+    }
+
+    .final-geral-frase {
+        font-size:
+            0.88rem;
+
+        margin:
+            20px 0;
+    }
+
+    .final-geral-pergunta {
+        font-size:
+            0.9rem !important;
+    }
+
+}
+
+/* =========================================================
+   NARRAÇÃO — E SE FOSSE VOCÊ?
+   ========================================================= */
+
+.texto-com-audio {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-bottom: 10px;
+}
+
+.texto-com-audio strong {
+    margin: 0 !important;
+
+    color: var(--text-main);
+
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   BOTÃO DE SOM
+   ========================================================= */
+
+.audio-btn {
+    position: relative;
+    z-index: 2;
+
+    flex-shrink: 0;
+
+    min-width: 96px;
+    height: 38px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 0 12px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.24);
+
+    border-radius: 20px;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    color: var(--text-main);
+
+    font-family: inherit;
+
+    font-size: 0.82rem;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow: none;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.audio-icone {
+    font-size: 1rem;
+
+    line-height: 1;
+}
+
+.audio-legenda {
+    line-height: 1;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   NARRAÇÃO ATIVADA
+   ========================================================= */
+
+.audio-btn[aria-pressed="true"] {
+    border-color:
+        rgba(125, 211, 252, 0.55);
+
+    background:
+        rgba(14, 165, 233, 0.12);
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.audio-btn:hover {
+    transform:
+        translateY(-1px);
+
+    background:
+        rgba(255, 255, 255, 0.14);
+
+    border-color:
+        rgba(255, 255, 255, 0.38);
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.16);
+}
+
+
+/* =========================================================
+   CLIQUE
+   ========================================================= */
+
+.audio-btn:active {
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   NARRAÇÃO DESATIVADA
+   ========================================================= */
+
+.audio-btn[aria-pressed="false"] {
+    opacity: 0.8;
+
+    background:
+        rgba(255, 255, 255, 0.06);
+
+    border-color:
+        rgba(255, 255, 255, 0.18);
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   ACESSIBILIDADE — TECLADO
+   ========================================================= */
+
+.audio-btn:focus-visible {
+    outline:
+        2px solid #7dd3fc;
+
+    outline-offset:
+        3px;
+}
+
+
+/* =========================================================
+   CELULAR
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .audio-btn {
+        min-width:
+            88px;
+
+        height:
+            36px;
+
+        padding:
+            0 10px;
+
+        font-size:
+            0.78rem;
+    }
+
+    .audio-icone {
+        font-size:
+            0.95rem;
+    }
+
+}

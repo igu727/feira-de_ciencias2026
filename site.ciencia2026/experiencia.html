@@ -97,6 +97,81 @@
                 </p>
 
 
+                <!-- =====================================
+                     PROGRESSO DA EXPERIÊNCIA
+                     ===================================== -->
+
+                <div class="experiencia-progresso">
+
+                    <div class="progresso-topo">
+
+                        <div>
+                            <span class="progresso-label">
+                                PROGRESSO DA EXPERIÊNCIA
+                            </span>
+
+                            <strong id="progressoTexto">
+                                0/4 histórias concluídas
+                            </strong>
+                        </div>
+
+                        <span
+                            class="progresso-porcentagem"
+                            id="progressoPorcentagem"
+                        >
+                            0%
+                        </span>
+
+                    </div>
+
+                    <div class="progresso-barra">
+
+                        <div
+                            class="progresso-barra-preenchida"
+                            id="progressoBarra"
+                        ></div>
+
+                    </div>
+
+                    <div class="progresso-lista">
+
+                        <div
+                            class="progresso-item"
+                            data-progresso-npc="novo-aluno"
+                        >
+                            <span class="progresso-status">🔒</span>
+                            <span>O Novo Aluno</span>
+                        </div>
+
+                        <div
+                            class="progresso-item"
+                            data-progresso-npc="colega-curiosa"
+                        >
+                            <span class="progresso-status">🔒</span>
+                            <span>A Colega Curiosa</span>
+                        </div>
+
+                        <div
+                            class="progresso-item"
+                            data-progresso-npc="o-grupo"
+                        >
+                            <span class="progresso-status">🔒</span>
+                            <span>O Grupo</span>
+                        </div>
+
+                        <div
+                            class="progresso-item"
+                            data-progresso-npc="momento-dificil"
+                        >
+                            <span class="progresso-status">🔒</span>
+                            <span>O Momento Difícil</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
                 <div class="npc-grid">
 
                     <!-- NPC 1 -->
@@ -258,9 +333,25 @@
 
                 <div class="npc-cenario">
 
-                    <strong>
-                        📖 O cenário
-                    </strong>
+                    <div class="texto-com-audio">
+
+    <strong>
+        📖 O cenário
+    </strong>
+
+    <button
+        class="audio-btn"
+        id="btnAudioCenario"
+        type="button"
+        aria-label="Repetir narração"
+        title="Repetir narração"
+        aria-pressed="true"
+    >
+        <span class="audio-icone">🔊</span>
+        <span class="audio-legenda">Repetir</span>
+    </button>
+
+</div>
 
                     <p id="npcDetalheCenario">
                         Você acabou de chegar em uma escola nova.
@@ -324,6 +415,22 @@
 
 
                 <div class="historia-cenario">
+
+                    <div class="texto-com-audio historia-audio">
+
+    <button
+        class="audio-btn"
+        id="btnAudioHistoria"
+        type="button"
+        aria-label="Repetir narração"
+        title="Repetir narração"
+        aria-pressed="true"
+    >
+        <span class="audio-icone">🔊</span>
+        <span class="audio-legenda">Repetir</span>
+    </button>
+
+</div>
 
                     <p id="historiaTexto">
                         Você chega à escola e percebe que ainda não conhece ninguém.
@@ -420,6 +527,94 @@
                     </button>
 
                 </div>
+
+            </div>
+
+
+            <!-- =========================================
+                 FINAL GERAL
+                 ========================================= -->
+
+            <div
+                class="experiencia-card experiencia-tela"
+                id="telaFinalGeral"
+                hidden
+            >
+
+                <div class="experiencia-badge">
+                    🌎 EXPERIÊNCIA CONCLUÍDA
+                </div>
+
+                <div class="final-geral-icon">
+                    🌎
+                </div>
+
+                <h2>
+                    Você conheceu todas as histórias.
+                </h2>
+
+                <p class="experiencia-intro">
+                    Agora é hora de olhar para tudo o que aconteceu.
+                </p>
+
+                <div class="final-geral-texto">
+
+                    <p>
+                        Ao longo dessas histórias, você encontrou situações diferentes.
+                        Algumas pareciam simples. Outras exigiam mais atenção.
+                    </p>
+
+                    <p>
+                        Mas todas tinham algo em comum:
+                        havia uma pessoa tentando encontrar seu espaço em um lugar novo.
+                    </p>
+
+                    <p>
+                        Talvez você tenha escolhido falar.
+                        Talvez tenha escolhido ouvir.
+                        Talvez tenha dado espaço.
+                        Talvez tenha ficado em dúvida.
+                    </p>
+
+                    <p>
+                        Não existe uma escolha perfeita para todas as situações.
+                    </p>
+
+                    <p>
+                        O importante é lembrar que, do outro lado,
+                        existe alguém com sua própria história, sentimentos,
+                        cultura e sonhos.
+                    </p>
+
+                    <div class="final-geral-destaque">
+
+                        <strong>
+                            🤝 Acolher não significa tratar alguém como diferente.
+                        </strong>
+
+                        <span>
+                            Significa fazer com que essa pessoa também possa se sentir parte.
+                        </span>
+
+                    </div>
+
+                    <div class="final-geral-frase">
+                        Respeito. Escuta. Empatia.
+                    </div>
+
+                    <p class="final-geral-pergunta">
+                        E se fosse você chegando a um lugar novo?
+                    </p>
+
+                </div>
+
+                <button
+                    class="experiencia-btn"
+                    id="btnVoltarInicioFinal"
+                    type="button"
+                >
+                    🌎 Voltar ao início
+                </button>
 
             </div>
 

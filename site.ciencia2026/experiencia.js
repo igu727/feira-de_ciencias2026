@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const telaNPC = document.getElementById("telaNPC");
     const telaHistoria = document.getElementById("telaHistoria");
     const telaFinal = document.getElementById("telaFinal");
+    const telaFinalGeral = document.getElementById("telaFinalGeral");
 
 
     /* =========================================================
@@ -23,6 +24,35 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnSairHistoria = document.getElementById("btnSairHistoria");
     const btnRecomecar = document.getElementById("btnRecomecar");
     const btnVoltarHistorias = document.getElementById("btnVoltarHistorias");
+    const btnVoltarInicioFinal = document.getElementById("btnVoltarInicioFinal");
+
+
+    /* =========================================================
+       BOTÕES DE ÁUDIO
+       ========================================================= */
+
+    const btnAudioCenario =
+        document.getElementById("btnAudioCenario");
+
+    const btnAudioHistoria =
+        document.getElementById("btnAudioHistoria");
+
+
+    /* =========================================================
+       ELEMENTOS DO PROGRESSO
+       ========================================================= */
+
+    const progressoTexto =
+        document.getElementById("progressoTexto");
+
+    const progressoPorcentagem =
+        document.getElementById("progressoPorcentagem");
+
+    const progressoBarra =
+        document.getElementById("progressoBarra");
+
+    const itensProgresso =
+        document.querySelectorAll(".progresso-item");
 
 
     /* =========================================================
@@ -79,10 +109,6 @@ document.addEventListener("DOMContentLoaded", () => {
        ========================================================= */
 
     const historias = {
-
-        /* =====================================================
-           1. O NOVO ALUNO
-           ===================================================== */
 
         "novo-aluno": [
 
@@ -164,10 +190,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         ],
 
-
-        /* =====================================================
-           2. A COLEGA CURIOSA
-           ===================================================== */
 
         "colega-curiosa": [
 
@@ -254,10 +276,6 @@ document.addEventListener("DOMContentLoaded", () => {
         ],
 
 
-        /* =====================================================
-           3. O GRUPO
-           ===================================================== */
-
         "o-grupo": [
 
             {
@@ -342,10 +360,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         ],
 
-
-        /* =====================================================
-           4. O MOMENTO DIFÍCIL
-           ===================================================== */
 
         "momento-dificil": [
 
@@ -442,6 +456,279 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================================
+       ÁUDIO / NARRAÇÃO
+       ========================================================= */
+
+    let audioAtivado = true;
+
+
+    function pararNarracao() {
+
+        if ("speechSynthesis" in window) {
+
+            window.speechSynthesis.cancel();
+
+        }
+
+    }
+
+
+    function falarTexto(texto) {
+
+        if (!audioAtivado) return;
+
+        if (!("speechSynthesis" in window)) return;
+
+
+        pararNarracao();
+
+
+        const fala =
+            new SpeechSynthesisUtterance(texto);
+
+
+        fala.lang = "pt-BR";
+
+        fala.rate = 0.92;
+
+        fala.pitch = 1;
+
+        fala.volume = 1;
+
+
+        const vozes =
+            window.speechSynthesis.getVoices();
+
+
+        const vozPortugues =
+            vozes.find((voz) =>
+                voz.lang &&
+                voz.lang.toLowerCase().startsWith("pt-br")
+            );
+
+
+        if (vozPortugues) {
+
+            fala.voice =
+                vozPortugues;
+
+        }
+
+
+        window.speechSynthesis.speak(fala);
+
+    }
+
+
+    function atualizarBotoesAudio() {
+
+        if (btnAudioCenario) {
+
+            const icone =
+                btnAudioCenario.querySelector(".audio-icone");
+
+            const legenda =
+                btnAudioCenario.querySelector(".audio-legenda");
+
+
+            if (audioAtivado) {
+
+                if (icone)
+                    icone.textContent = "🔊";
+
+                if (legenda)
+                    legenda.textContent = "Repetir";
+
+                btnAudioCenario.title =
+                    "Repetir narração";
+
+                btnAudioCenario.setAttribute(
+                    "aria-label",
+                    "Repetir narração"
+                );
+
+                btnAudioCenario.setAttribute(
+                    "aria-pressed",
+                    "true"
+                );
+
+            } else {
+
+                if (icone)
+                    icone.textContent = "🔇";
+
+                if (legenda)
+                    legenda.textContent = "Ativar";
+
+                btnAudioCenario.title =
+                    "Ativar narração";
+
+                btnAudioCenario.setAttribute(
+                    "aria-label",
+                    "Ativar narração"
+                );
+
+                btnAudioCenario.setAttribute(
+                    "aria-pressed",
+                    "false"
+                );
+
+            }
+
+        }
+
+
+        if (btnAudioHistoria) {
+
+            const icone =
+                btnAudioHistoria.querySelector(".audio-icone");
+
+            const legenda =
+                btnAudioHistoria.querySelector(".audio-legenda");
+
+
+            if (audioAtivado) {
+
+                if (icone)
+                    icone.textContent = "🔊";
+
+                if (legenda)
+                    legenda.textContent = "Repetir";
+
+                btnAudioHistoria.title =
+                    "Repetir narração";
+
+                btnAudioHistoria.setAttribute(
+                    "aria-label",
+                    "Repetir narração"
+                );
+
+                btnAudioHistoria.setAttribute(
+                    "aria-pressed",
+                    "true"
+                );
+
+            } else {
+
+                if (icone)
+                    icone.textContent = "🔇";
+
+                if (legenda)
+                    legenda.textContent = "Ativar";
+
+                btnAudioHistoria.title =
+                    "Ativar narração";
+
+                btnAudioHistoria.setAttribute(
+                    "aria-label",
+                    "Ativar narração"
+                );
+
+                btnAudioHistoria.setAttribute(
+                    "aria-pressed",
+                    "false"
+                );
+
+            }
+
+        }
+
+    }
+
+
+    function alternarAudio() {
+
+        audioAtivado =
+            !audioAtivado;
+
+
+        if (!audioAtivado) {
+
+            pararNarracao();
+
+        }
+
+
+        atualizarBotoesAudio();
+
+    }
+
+
+    if (btnAudioCenario) {
+
+        btnAudioCenario.addEventListener(
+            "click",
+            () => {
+
+                if (!audioAtivado) {
+
+                    alternarAudio();
+
+                    return;
+
+                }
+
+
+                const npc =
+                    npcs[npcSelecionado];
+
+
+                if (!npc) return;
+
+
+                falarTexto(
+                    npc.cenario
+                );
+
+            }
+        );
+
+    }
+
+
+    if (btnAudioHistoria) {
+
+        btnAudioHistoria.addEventListener(
+            "click",
+            () => {
+
+                if (!audioAtivado) {
+
+                    alternarAudio();
+
+                    return;
+
+                }
+
+
+                const historia =
+                    historias[npcSelecionado];
+
+
+                if (!historia) return;
+
+
+                const situacao =
+                    historia[situacaoAtual];
+
+
+                if (!situacao) return;
+
+
+                falarTexto(
+                    `${situacao.titulo}. ${situacao.texto}`
+                );
+
+            }
+        );
+
+    }
+
+
+    atualizarBotoesAudio();
+
+
+    /* =========================================================
        FINAIS
        ========================================================= */
 
@@ -532,13 +819,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function mostrarTela(tela) {
 
+        pararNarracao();
+
+
         telaInicial.hidden = true;
         telaNPCs.hidden = true;
         telaNPC.hidden = true;
         telaHistoria.hidden = true;
         telaFinal.hidden = true;
+        telaFinalGeral.hidden = true;
+
 
         tela.hidden = false;
+
 
         window.scrollTo({
             top: 0,
@@ -549,36 +842,158 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================================
-       COMEÇAR
+       ATUALIZAR PROGRESSO
        ========================================================= */
 
-    btnComecar.addEventListener("click", () => {
+    function atualizarProgresso() {
 
-        mostrarTela(telaNPCs);
+        const total =
+            Object.keys(npcs).length;
 
-    });
+        const concluidos =
+            personagensConcluidos.size;
+
+
+        const porcentagem =
+            Math.round(
+                (concluidos / total) * 100
+            );
+
+
+        progressoTexto.textContent =
+            `${concluidos}/${total} histórias concluídas`;
+
+
+        progressoPorcentagem.textContent =
+            `${porcentagem}%`;
+
+
+        progressoBarra.style.width =
+            `${porcentagem}%`;
+
+
+        itensProgresso.forEach((item) => {
+
+            const idNPC =
+                item.dataset.progressoNpc;
+
+
+            const status =
+                item.querySelector(
+                    ".progresso-status"
+                );
+
+
+            if (
+                personagensConcluidos.has(
+                    idNPC
+                )
+            ) {
+
+                item.classList.add(
+                    "concluido"
+                );
+
+                status.textContent =
+                    "✅";
+
+            } else {
+
+                item.classList.remove(
+                    "concluido"
+                );
+
+                status.textContent =
+                    "🔒";
+
+            }
+
+        });
+
+    }
+
+
+    /* =========================================================
+       VERIFICAR EXPERIÊNCIA COMPLETA
+       ========================================================= */
+
+    function verificarExperienciaCompleta() {
+
+        const total =
+            Object.keys(npcs).length;
+
+
+        if (
+            personagensConcluidos.size ===
+            total
+        ) {
+
+            setTimeout(() => {
+
+                mostrarTela(
+                    telaFinalGeral
+                );
+
+            }, 350);
+
+
+            return true;
+
+        }
+
+
+        return false;
+
+    }
+
+
+    /* =========================================================
+       VOLTAR AO INÍCIO
+       ========================================================= */
+
+    btnComecar.addEventListener(
+        "click",
+        () => {
+
+            atualizarProgresso();
+
+            mostrarTela(telaNPCs);
+
+        }
+    );
 
 
     /* =========================================================
        VOLTAR AO SITE
        ========================================================= */
 
-    btnVoltar.addEventListener("click", () => {
+    btnVoltar.addEventListener(
+        "click",
+        () => {
 
-        window.location.href = "index.html";
+            pararNarracao();
 
-    });
+            window.location.href =
+                "index.html";
+
+        }
+    );
 
 
     /* =========================================================
        VOLTAR PARA INÍCIO DA EXPERIÊNCIA
        ========================================================= */
 
-    btnVoltarInicio.addEventListener("click", () => {
+    btnVoltarInicio.addEventListener(
+        "click",
+        () => {
 
-        mostrarTela(telaInicial);
+            mostrarTela(
+                telaInicial
+            );
 
-    });
+        }
+    );
 
 
     /* =========================================================
@@ -586,103 +1001,143 @@ document.addEventListener("DOMContentLoaded", () => {
        ========================================================= */
 
     const botoesNPC =
-        document.querySelectorAll(".npc-card");
+        document.querySelectorAll(
+            ".npc-card"
+        );
 
 
-    botoesNPC.forEach((botao) => {
+    botoesNPC.forEach(
+        (botao) => {
 
-        botao.addEventListener("click", () => {
+            botao.addEventListener(
+                "click",
+                () => {
 
-            const idNPC =
-                botao.dataset.npc;
-
-            const npc =
-                npcs[idNPC];
-
-
-            if (!npc) return;
+                    const idNPC =
+                        botao.dataset.npc;
 
 
-            npcSelecionado =
-                idNPC;
-
-            situacaoAtual = 0;
-            finalAtual = null;
+                    const npc =
+                        npcs[idNPC];
 
 
-            document.getElementById(
-                "npcDetalheIcon"
-            ).textContent =
-                npc.icone;
+                    if (!npc) return;
 
 
-            document.getElementById(
-                "npcDetalheNome"
-            ).textContent =
-                npc.nome;
+                    npcSelecionado =
+                        idNPC;
+
+                    situacaoAtual =
+                        0;
+
+                    finalAtual =
+                        null;
 
 
-            document.getElementById(
-                "npcDetalheBadge"
-            ).textContent =
-                `DIFICULDADE ${npc.dificuldade}`;
+                    document.getElementById(
+                        "npcDetalheIcon"
+                    ).textContent =
+                        npc.icone;
 
 
-            document.getElementById(
-                "npcDetalheDescricao"
-            ).textContent =
-                npc.descricao;
+                    document.getElementById(
+                        "npcDetalheNome"
+                    ).textContent =
+                        npc.nome;
 
 
-            document.getElementById(
-                "npcDetalheCenario"
-            ).textContent =
-                npc.cenario;
+                    document.getElementById(
+                        "npcDetalheBadge"
+                    ).textContent =
+                        `DIFICULDADE ${npc.dificuldade}`;
 
 
-            mostrarTela(telaNPC);
+                    document.getElementById(
+                        "npcDetalheDescricao"
+                    ).textContent =
+                        npc.descricao;
 
-        });
 
-    });
+                    document.getElementById(
+                        "npcDetalheCenario"
+                    ).textContent =
+                        npc.cenario;
+
+
+                    atualizarBotoesAudio();
+
+
+                    mostrarTela(
+                        telaNPC
+                    );
+
+                }
+            );
+
+        }
+    );
 
 
     /* =========================================================
        VOLTAR PARA NPCS
        ========================================================= */
 
-    btnVoltarNPCs.addEventListener("click", () => {
+    btnVoltarNPCs.addEventListener(
+        "click",
+        () => {
 
-        npcSelecionado = null;
-        situacaoAtual = 0;
-        finalAtual = null;
+            npcSelecionado =
+                null;
 
-        mostrarTela(telaNPCs);
+            situacaoAtual =
+                0;
 
-    });
+            finalAtual =
+                null;
+
+
+            atualizarProgresso();
+
+
+            mostrarTela(
+                telaNPCs
+            );
+
+        }
+    );
 
 
     /* =========================================================
        INICIAR HISTÓRIA
        ========================================================= */
 
-    btnIniciarNPC.addEventListener("click", () => {
+    btnIniciarNPC.addEventListener(
+        "click",
+        () => {
 
-        if (!npcSelecionado) return;
+            if (!npcSelecionado)
+                return;
 
 
-        if (!historias[npcSelecionado]) {
+            if (
+                !historias[
+                    npcSelecionado
+                ]
+            ) {
 
-            return;
+                return;
+
+            }
+
+
+            situacaoAtual =
+                0;
+
+
+            mostrarHistoria();
 
         }
-
-
-        situacaoAtual = 0;
-
-        mostrarHistoria();
-
-    });
+    );
 
 
     /* =========================================================
@@ -692,14 +1147,18 @@ document.addEventListener("DOMContentLoaded", () => {
     function mostrarHistoria() {
 
         const historia =
-            historias[npcSelecionado];
+            historias[
+                npcSelecionado
+            ];
 
 
         if (!historia) return;
 
 
         const situacao =
-            historia[situacaoAtual];
+            historia[
+                situacaoAtual
+            ];
 
 
         if (!situacao) return;
@@ -708,19 +1167,27 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById(
             "historiaTitulo"
         ).textContent =
-            npcs[npcSelecionado].nome;
+            npcs[
+                npcSelecionado
+            ].nome;
 
 
         document.getElementById(
             "historiaBadge"
         ).textContent =
-            `🌎 ${npcs[npcSelecionado].nome.toUpperCase()}`;
+            `🌎 ${npcs[
+                npcSelecionado
+            ].nome.toUpperCase()}`;
 
 
         document.getElementById(
             "historiaProgresso"
         ).textContent =
-            `Situação ${situacaoAtual + 1} de ${historia.length}`;
+            `Situação ${
+                situacaoAtual + 1
+            } de ${
+                historia.length
+            }`;
 
 
         document.getElementById(
@@ -735,45 +1202,70 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
 
-        opcoes.innerHTML = "";
+        opcoes.innerHTML =
+            "";
 
 
-        situacao.opcoes.forEach((opcao) => {
+        situacao.opcoes.forEach(
+            (opcao) => {
 
-            const botao =
-                document.createElement("button");
-
-
-            botao.type =
-                "button";
-
-
-            botao.className =
-                "historia-opcao";
+                const botao =
+                    document.createElement(
+                        "button"
+                    );
 
 
-            botao.textContent =
-                opcao.texto;
+                botao.type =
+                    "button";
 
 
-            botao.addEventListener(
-                "click",
-                () => {
+                botao.className =
+                    "historia-opcao";
 
-                    escolherOpcao(opcao);
 
-                }
+                botao.textContent =
+                    opcao.texto;
+
+
+                botao.addEventListener(
+                    "click",
+                    () => {
+
+                        escolherOpcao(
+                            opcao
+                        );
+
+                    }
+                );
+
+
+                opcoes.appendChild(
+                    botao
+                );
+
+            }
+        );
+
+
+        atualizarBotoesAudio();
+
+
+        mostrarTela(
+            telaHistoria
+        );
+
+
+        /* =====================================
+           NARRAÇÃO AUTOMÁTICA
+           ===================================== */
+
+        setTimeout(() => {
+
+            falarTexto(
+                `${situacao.titulo}. ${situacao.texto}`
             );
 
-
-            opcoes.appendChild(
-                botao
-            );
-
-        });
-
-
-        mostrarTela(telaHistoria);
+        }, 450);
 
     }
 
@@ -783,6 +1275,9 @@ document.addEventListener("DOMContentLoaded", () => {
        ========================================================= */
 
     function escolherOpcao(opcao) {
+
+        pararNarracao();
+
 
         if (opcao.final) {
 
@@ -795,7 +1290,11 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
 
+            atualizarProgresso();
+
+
             mostrarFinal();
+
 
             return;
 
@@ -825,7 +1324,9 @@ document.addEventListener("DOMContentLoaded", () => {
     function mostrarFinal() {
 
         const final =
-            finais[finalAtual];
+            finais[
+                finalAtual
+            ];
 
 
         if (!final) return;
@@ -865,7 +1366,12 @@ document.addEventListener("DOMContentLoaded", () => {
             'Recomeçar história <span>↻</span>';
 
 
-        mostrarTela(telaFinal);
+        mostrarTela(
+            telaFinal
+        );
+
+
+        verificarExperienciaCompleta();
 
     }
 
@@ -874,40 +1380,88 @@ document.addEventListener("DOMContentLoaded", () => {
        RECOMEÇAR
        ========================================================= */
 
-    btnRecomecar.addEventListener("click", () => {
+    btnRecomecar.addEventListener(
+        "click",
+        () => {
 
-        situacaoAtual = 0;
-        finalAtual = null;
+            situacaoAtual =
+                0;
 
-        mostrarHistoria();
+            finalAtual =
+                null;
 
-    });
+
+            mostrarHistoria();
+
+        }
+    );
 
 
     /* =========================================================
        VOLTAR PARA ESCOLHA DE PERSONAGEM
        ========================================================= */
 
-    btnVoltarHistorias.addEventListener("click", () => {
+    btnVoltarHistorias.addEventListener(
+        "click",
+        () => {
 
-        npcSelecionado = null;
-        situacaoAtual = 0;
-        finalAtual = null;
+            npcSelecionado =
+                null;
 
-        mostrarTela(telaNPCs);
+            situacaoAtual =
+                0;
 
-    });
+            finalAtual =
+                null;
+
+
+            atualizarProgresso();
+
+
+            mostrarTela(
+                telaNPCs
+            );
+
+        }
+    );
 
 
     /* =========================================================
        SAIR DA HISTÓRIA
        ========================================================= */
 
-    btnSairHistoria.addEventListener("click", () => {
+    btnSairHistoria.addEventListener(
+        "click",
+        () => {
 
-        mostrarTela(telaNPC);
+            mostrarTela(
+                telaNPC
+            );
 
-    });
+        }
+    );
 
+
+    /* =========================================================
+       VOLTAR AO INÍCIO APÓS CONCLUIR
+       ========================================================= */
+
+    btnVoltarInicioFinal.addEventListener(
+        "click",
+        () => {
+
+            mostrarTela(
+                telaInicial
+            );
+
+        }
+    );
+
+
+    /* =========================================================
+       INICIALIZAR PROGRESSO
+       ========================================================= */
+
+    atualizarProgresso();
 
 });
