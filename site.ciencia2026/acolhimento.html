@@ -3,6 +3,15 @@
 
 <head>
 
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2C0FWNPRM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-E2C0FWNPRM');
+    </script>
+
     <meta charset="UTF-8">
 
     <meta
@@ -31,11 +40,8 @@
            ===================================================== */
 
         .acolhimento-page {
-
             overflow-x: hidden;
-
             overflow-y: auto;
-
         }
 
 
@@ -44,208 +50,122 @@
            ===================================================== */
 
         .acolhimento-hero {
-
             position: relative;
-
             min-height: 440px;
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             text-align: center;
-
             padding: 80px 20px;
-
             overflow: hidden;
-
             background:
-
                 radial-gradient(
                     circle at 15% 25%,
                     rgba(16, 185, 129, 0.20),
                     transparent 30%
                 ),
-
                 radial-gradient(
                     circle at 85% 20%,
                     rgba(14, 165, 233, 0.18),
                     transparent 30%
                 ),
-
                 radial-gradient(
                     circle at 50% 100%,
                     rgba(99, 102, 241, 0.18),
                     transparent 40%
                 ),
-
                 #0f172a;
-
             border-bottom:
                 1px solid rgba(148, 163, 184, 0.08);
-
         }
-
 
         .acolhimento-hero::before {
-
             content: "🎒";
-
             position: absolute;
-
             left: 10%;
-
             top: 80px;
-
             font-size: 4rem;
-
             opacity: 0.12;
-
             transform: rotate(-12deg);
-
         }
-
 
         .acolhimento-hero::after {
-
             content: "🤝";
-
             position: absolute;
-
             right: 10%;
-
             bottom: 65px;
-
             font-size: 4rem;
-
             opacity: 0.12;
-
             transform: rotate(10deg);
-
         }
-
 
         .acolhimento-hero-content {
-
             position: relative;
-
             z-index: 2;
-
             max-width: 850px;
-
         }
-
 
         .acolhimento-kicker {
-
             display: inline-flex;
-
             align-items: center;
-
             gap: 7px;
-
             padding: 8px 15px;
-
             margin-bottom: 20px;
-
             border:
                 1px solid rgba(52, 211, 153, 0.35);
-
             border-radius: 999px;
-
             background:
                 rgba(16, 185, 129, 0.08);
-
             color: #6ee7b7;
-
             font-size: 0.78rem;
-
             font-weight: 800;
-
             letter-spacing: 0.4px;
-
         }
 
-
         .acolhimento-hero h1 {
-
             margin-bottom: 18px;
-
             font-size:
                 clamp(2.5rem, 6vw, 4.5rem);
-
             line-height: 1.05;
-
             letter-spacing: -2px;
-
             background:
-
                 linear-gradient(
                     90deg,
                     #ffffff,
                     #a7f3d0,
                     #7dd3fc
                 );
-
             -webkit-background-clip: text;
-
             background-clip: text;
-
             color: transparent;
-
         }
-
 
         .acolhimento-hero p {
-
             max-width: 720px;
-
             margin: 0 auto;
-
             color: #94a3b8;
-
             font-size: 1rem;
-
             line-height: 1.7;
-
         }
-
 
         .hero-tags {
-
             display: flex;
-
             justify-content: center;
-
             flex-wrap: wrap;
-
             gap: 10px;
-
             margin-top: 28px;
-
         }
 
-
         .hero-tag {
-
             padding: 8px 13px;
-
             border:
                 1px solid rgba(148, 163, 184, 0.12);
-
             border-radius: 999px;
-
             background:
                 rgba(30, 41, 59, 0.65);
-
             color: #cbd5e1;
-
             font-size: 0.75rem;
-
             font-weight: 700;
-
         }
 
 
@@ -254,37 +174,22 @@
            ===================================================== */
 
         .acolhimento-intro {
-
             padding: 65px 0 35px;
-
             text-align: center;
-
         }
-
 
         .acolhimento-intro h2 {
-
             margin-bottom: 12px;
-
             font-size: 1.9rem;
-
             letter-spacing: -0.7px;
-
         }
 
-
         .acolhimento-intro p {
-
             max-width: 720px;
-
             margin: 0 auto;
-
             color: #94a3b8;
-
             font-size: 0.92rem;
-
             line-height: 1.7;
-
         }
 
 
@@ -293,16 +198,11 @@
            ===================================================== */
 
         .acolhimento-grid {
-
             display: grid;
-
             grid-template-columns:
                 repeat(2, 1fr);
-
             gap: 22px;
-
             padding-bottom: 70px;
-
         }
 
 
@@ -311,98 +211,60 @@
            ===================================================== */
 
         .acolhimento-card {
-
             position: relative;
-
             padding: 27px;
-
             border:
                 1px solid rgba(148, 163, 184, 0.12);
-
             border-radius: 22px;
-
             background:
-
                 linear-gradient(
                     145deg,
                     #202c40,
                     #172235
                 );
-
             box-shadow:
                 0 18px 40px rgba(0, 0, 0, 0.18);
-
             transition:
                 transform 0.25s ease,
                 border-color 0.25s ease,
                 box-shadow 0.25s ease;
-
         }
-
 
         .acolhimento-card:hover {
-
             transform: translateY(-5px);
-
             border-color:
                 rgba(99, 102, 241, 0.30);
-
             box-shadow:
                 0 25px 50px rgba(0, 0, 0, 0.25);
-
         }
-
 
         .card-icon {
-
             width: 58px;
-
             height: 58px;
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             margin-bottom: 18px;
-
             border-radius: 17px;
-
             background:
                 rgba(99, 102, 241, 0.10);
-
             border:
                 1px solid rgba(99, 102, 241, 0.15);
-
             font-size: 1.8rem;
-
         }
-
 
         .acolhimento-card h3 {
-
             margin-bottom: 10px;
-
             color: #f8fafc;
-
             font-size: 1.25rem;
-
             letter-spacing: -0.4px;
-
         }
 
-
         .acolhimento-card > p {
-
             margin-bottom: 17px;
-
             color: #94a3b8;
-
             font-size: 0.86rem;
-
             line-height: 1.7;
-
         }
 
 
@@ -411,68 +273,38 @@
            ===================================================== */
 
         .info-list {
-
             display: flex;
-
             flex-direction: column;
-
             gap: 11px;
-
             margin: 0;
-
             padding: 0;
-
             list-style: none;
-
         }
-
 
         .info-list li {
-
             position: relative;
-
             padding-left: 27px;
-
             color: #cbd5e1;
-
             font-size: 0.83rem;
-
             line-height: 1.55;
-
         }
 
-
         .info-list li::before {
-
             content: "✓";
-
             position: absolute;
-
             left: 0;
-
             top: 0;
-
             width: 19px;
-
             height: 19px;
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             border-radius: 50%;
-
             background:
                 rgba(16, 185, 129, 0.12);
-
             color: #34d399;
-
             font-size: 0.68rem;
-
             font-weight: 900;
-
         }
 
 
@@ -481,155 +313,92 @@
            ===================================================== */
 
         .passos-section {
-
             padding: 70px 0;
-
             background:
                 linear-gradient(
                     180deg,
                     #111c2d,
                     #0f172a
                 );
-
             border-top:
                 1px solid rgba(148, 163, 184, 0.06);
-
             border-bottom:
                 1px solid rgba(148, 163, 184, 0.06);
-
         }
-
 
         .section-title {
-
             text-align: center;
-
             margin-bottom: 35px;
-
         }
-
 
         .section-title span {
-
             display: inline-block;
-
             margin-bottom: 9px;
-
             color: #38bdf8;
-
             font-size: 0.72rem;
-
             font-weight: 800;
-
             letter-spacing: 0.8px;
-
         }
-
 
         .section-title h2 {
-
             margin-bottom: 9px;
-
             font-size: 1.9rem;
-
             letter-spacing: -0.7px;
-
         }
-
 
         .section-title p {
-
             max-width: 650px;
-
             margin: 0 auto;
-
             color: #94a3b8;
-
             font-size: 0.86rem;
-
             line-height: 1.6;
-
         }
-
 
         .passos-grid {
-
             display: grid;
-
             grid-template-columns:
                 repeat(4, 1fr);
-
             gap: 16px;
-
         }
-
 
         .passo {
-
             padding: 23px;
-
             border:
                 1px solid rgba(148, 163, 184, 0.10);
-
             border-radius: 18px;
-
             background:
                 rgba(30, 41, 59, 0.62);
-
         }
 
-
         .passo-numero {
-
             display: inline-flex;
-
             align-items: center;
-
             justify-content: center;
-
             width: 34px;
-
             height: 34px;
-
             margin-bottom: 16px;
-
             border-radius: 10px;
-
             background:
                 linear-gradient(
                     135deg,
                     #6366f1,
                     #0ea5e9
                 );
-
             color: white;
-
             font-size: 0.75rem;
-
             font-weight: 800;
-
         }
-
 
         .passo h3 {
-
             margin-bottom: 8px;
-
             color: #f8fafc;
-
             font-size: 0.98rem;
-
         }
 
-
         .passo p {
-
             color: #94a3b8;
-
             font-size: 0.78rem;
-
             line-height: 1.6;
-
         }
 
 
@@ -638,62 +407,37 @@
            ===================================================== */
 
         .frases-section {
-
             padding: 70px 0;
-
         }
-
 
         .frases-grid {
-
             display: grid;
-
             grid-template-columns:
                 repeat(3, 1fr);
-
             gap: 17px;
-
         }
-
 
         .frase {
-
             padding: 21px;
-
             border-radius: 17px;
-
             background:
                 #172235;
-
             border:
                 1px solid rgba(148, 163, 184, 0.10);
-
         }
-
 
         .frase-portugues {
-
             display: block;
-
             margin-bottom: 8px;
-
             color: #f8fafc;
-
             font-size: 0.9rem;
-
             font-weight: 700;
-
         }
 
-
         .frase-explicacao {
-
             color: #64748b;
-
             font-size: 0.74rem;
-
             line-height: 1.5;
-
         }
 
 
@@ -702,91 +446,55 @@
            ===================================================== */
 
         .ajuda-section {
-
             padding: 70px 0;
-
             background:
-
                 radial-gradient(
                     circle at 15% 50%,
                     rgba(16, 185, 129, 0.09),
                     transparent 30%
                 ),
-
                 #0d1626;
-
         }
-
 
         .ajuda-box {
-
             max-width: 900px;
-
             margin: 0 auto;
-
             padding: 32px;
-
             border:
                 1px solid rgba(52, 211, 153, 0.15);
-
             border-radius: 24px;
-
             background:
                 rgba(16, 185, 129, 0.035);
-
         }
-
 
         .ajuda-grid {
-
             display: grid;
-
             grid-template-columns:
                 repeat(3, 1fr);
-
             gap: 16px;
-
             margin-top: 25px;
-
         }
-
 
         .ajuda-item {
-
             padding: 20px;
-
             border-radius: 15px;
-
             background:
                 rgba(15, 23, 42, 0.65);
-
             border:
                 1px solid rgba(148, 163, 184, 0.08);
-
         }
-
 
         .ajuda-item strong {
-
             display: block;
-
             margin-bottom: 7px;
-
             color: #f8fafc;
-
             font-size: 0.88rem;
-
         }
 
-
         .ajuda-item p {
-
             color: #94a3b8;
-
             font-size: 0.76rem;
-
             line-height: 1.55;
-
         }
 
 
@@ -795,61 +503,36 @@
            ===================================================== */
 
         .faq-section {
-
             padding: 70px 0;
-
         }
-
 
         .faq-list {
-
             max-width: 850px;
-
             margin: 0 auto;
-
             display: flex;
-
             flex-direction: column;
-
             gap: 12px;
-
         }
-
 
         .faq-item {
-
             padding: 20px 22px;
-
             border:
                 1px solid rgba(148, 163, 184, 0.10);
-
             border-radius: 16px;
-
             background:
                 #172235;
-
         }
-
 
         .faq-item h3 {
-
             margin-bottom: 8px;
-
             color: #f8fafc;
-
             font-size: 0.9rem;
-
         }
 
-
         .faq-item p {
-
             color: #94a3b8;
-
             font-size: 0.79rem;
-
             line-height: 1.6;
-
         }
 
 
@@ -858,99 +541,60 @@
            ===================================================== */
 
         .acolhimento-final {
-
             padding: 85px 20px;
-
             text-align: center;
-
             background:
-
                 radial-gradient(
                     circle at 50% 100%,
                     rgba(14, 165, 233, 0.12),
                     transparent 45%
                 ),
-
                 #0f172a;
-
         }
-
 
         .acolhimento-final-icon {
-
             font-size: 2.8rem;
-
             margin-bottom: 15px;
-
         }
-
 
         .acolhimento-final h2 {
-
             margin-bottom: 12px;
-
             font-size: 2rem;
-
         }
-
 
         .acolhimento-final p {
-
             max-width: 650px;
-
             margin: 0 auto 25px;
-
             color: #94a3b8;
-
             font-size: 0.9rem;
-
             line-height: 1.7;
-
         }
 
-
         .final-button {
-
             display: inline-flex;
-
             align-items: center;
-
             gap: 7px;
-
             padding: 12px 20px;
-
             border-radius: 999px;
-
             background:
-
                 linear-gradient(
                     135deg,
                     #6366f1,
                     #0ea5e9
                 );
-
             color: white;
-
             text-decoration: none;
-
             font-size: 0.82rem;
-
             font-weight: 800;
-
             transition:
                 transform 0.2s ease,
                 box-shadow 0.2s ease;
-
         }
 
-
         .final-button:hover {
-
             transform: translateY(-2px);
-
             box-shadow:
                 0 12px 28px rgba(99, 102, 241, 0.25);
-
         }
 
 
@@ -961,26 +605,18 @@
         @media (max-width: 900px) {
 
             .passos-grid {
-
                 grid-template-columns:
                     repeat(2, 1fr);
-
             }
-
 
             .frases-grid {
-
                 grid-template-columns:
                     repeat(2, 1fr);
-
             }
 
-
             .ajuda-grid {
-
                 grid-template-columns:
                     1fr;
-
             }
 
         }
@@ -989,58 +625,37 @@
         @media (max-width: 720px) {
 
             .acolhimento-hero {
-
                 min-height: 400px;
-
                 padding:
                     65px 20px 70px;
-
             }
-
 
             .acolhimento-hero h1 {
-
                 font-size: 2.7rem;
-
             }
-
 
             .acolhimento-hero::before,
             .acolhimento-hero::after {
-
                 display: none;
-
             }
-
 
             .acolhimento-grid {
-
                 grid-template-columns:
                     1fr;
-
             }
-
 
             .passos-grid {
-
                 grid-template-columns:
                     1fr;
-
             }
-
 
             .frases-grid {
-
                 grid-template-columns:
                     1fr;
-
             }
 
-
             .ajuda-box {
-
                 padding: 22px;
-
             }
 
         }
@@ -1049,39 +664,24 @@
         @media (max-width: 480px) {
 
             .acolhimento-hero h1 {
-
                 font-size: 2.25rem;
-
             }
-
 
             .acolhimento-hero p {
-
                 font-size: 0.88rem;
-
             }
-
 
             .hero-tags {
-
                 flex-direction: column;
-
                 align-items: center;
-
             }
-
 
             .acolhimento-card {
-
                 padding: 22px;
-
             }
 
-
             .section-title h2 {
-
                 font-size: 1.6rem;
-
             }
 
         }
@@ -1109,23 +709,22 @@
 
         <nav>
 
-    <a href="index.html">
-        Início
-    </a>
+            <a href="index.html">
+                Início
+            </a>
 
-    <a href="acolhimento.html">
-        Guia de Acolhimento 🎒
-    </a>
+            <a href="acolhimento.html">
+                Guia de Acolhimento 🎒
+            </a>
 
-    <a
-        href="comunidade.html"
-        class="nav-btn"
-    >
-        Fórum da Comunidade 💬
-    </a>
+            <a
+                href="comunidade.html"
+                class="nav-btn"
+            >
+                Fórum da Comunidade 💬
+            </a>
 
-
-</nav>
+        </nav>
 
     </header>
 

@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2C0FWNPRM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-E2C0FWNPRM');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -294,156 +303,156 @@
             letter-spacing: 0.04em;
         }
 
-/* =====================================================
-   ENTREVISTAS E MATERIAIS DA PESQUISA
-   ===================================================== */
+        /* =====================================================
+           ENTREVISTAS E MATERIAIS DA PESQUISA
+           ===================================================== */
 
-.home-videos {
-    padding: 90px 20px;
-    background: #111827;
-}
+        .home-videos {
+            padding: 90px 20px;
+            background: #111827;
+        }
 
-.materiais-home-grid {
-    max-width: 1050px;
-    margin: 40px auto 0;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-}
+        .materiais-home-grid {
+            max-width: 1050px;
+            margin: 40px auto 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
 
-.material-home-card {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    border-radius: 22px;
-    background: #1e293b;
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-}
+        .material-home-card {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border-radius: 22px;
+            background: #1e293b;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
 
-.material-home-card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(56, 189, 248, 0.4);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-}
+        .material-home-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+        }
 
-/* Player de vídeo e área de preview (imagem/ícone) com altura padronizada */
-.entrevista-player,
-.material-home-preview {
-    width: 100%;
-    height: 240px;
-    background: #0f172a;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
+        /* Player de vídeo e área de preview (imagem/ícone) com altura padronizada */
+        .entrevista-player,
+        .material-home-preview {
+            width: 100%;
+            height: 240px;
+            background: #0f172a;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
 
-.entrevista-player {
-    object-fit: cover;
-    display: block;
-}
+        .entrevista-player {
+            object-fit: cover;
+            display: block;
+        }
 
-.material-home-preview {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background:
-        radial-gradient(circle at 30% 30%, rgba(99, 102, 241, 0.22), transparent 45%),
-        linear-gradient(135deg, #172554, #0f172a);
-}
+        .material-home-preview {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 30% 30%, rgba(99, 102, 241, 0.22), transparent 45%),
+                linear-gradient(135deg, #172554, #0f172a);
+        }
 
-.material-home-preview img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.35s ease;
-}
+        .material-home-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.35s ease;
+        }
 
-.material-home-card:hover .material-home-preview img {
-    transform: scale(1.04);
-}
+        .material-home-card:hover .material-home-preview img {
+            transform: scale(1.04);
+        }
 
-.material-home-icon {
-    width: 76px;
-    height: 76px;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.3rem;
-    background: rgba(99, 102, 241, 0.14);
-    border: 1px solid rgba(99, 102, 241, 0.28);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
-}
+        .material-home-icon {
+            width: 76px;
+            height: 76px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.3rem;
+            background: rgba(99, 102, 241, 0.14);
+            border: 1px solid rgba(99, 102, 241, 0.28);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+        }
 
-/* Conteúdo textual do card */
-.material-home-info {
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
+        /* Conteúdo textual do card */
+        .material-home-info {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
 
-.material-home-info h3 {
-    color: #f8fafc;
-    font-size: 1.15rem;
-    margin: 0 0 10px;
-    line-height: 1.4;
-}
+        .material-home-info h3 {
+            color: #f8fafc;
+            font-size: 1.15rem;
+            margin: 0 0 10px;
+            line-height: 1.4;
+        }
 
-.material-home-info p {
-    color: #94a3b8;
-    margin: 0 0 20px;
-    line-height: 1.65;
-    font-size: 0.92rem;
-    flex: 1; /* Empurra o botão sempre para o rodapé do card */
-}
+        .material-home-info p {
+            color: #94a3b8;
+            margin: 0 0 20px;
+            line-height: 1.65;
+            font-size: 0.92rem;
+            flex: 1; /* Empurra o botão sempre para o rodapé do card */
+        }
 
-/* Botão/Link de ação */
-.material-home-link {
-    display: inline-flex;
-    align-items: center;
-    align-self: flex-start;
-    gap: 6px;
-    padding: 10px 16px;
-    border-radius: 12px;
-    background: rgba(56, 189, 248, 0.1);
-    border: 1px solid rgba(56, 189, 248, 0.25);
-    color: #7dd3fc;
-    font-size: 0.85rem;
-    font-weight: 700;
-    text-decoration: none;
-    transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
-}
+        /* Botão/Link de ação */
+        .material-home-link {
+            display: inline-flex;
+            align-items: center;
+            align-self: flex-start;
+            gap: 6px;
+            padding: 10px 16px;
+            border-radius: 12px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            color: #7dd3fc;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+        }
 
-.material-home-link:hover {
-    background: rgba(56, 189, 248, 0.2);
-    color: #ffffff;
-    transform: translateX(3px);
-}
+        .material-home-link:hover {
+            background: rgba(56, 189, 248, 0.2);
+            color: #ffffff;
+            transform: translateX(3px);
+        }
 
-@media (max-width: 850px) {
-    .como-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+        @media (max-width: 850px) {
+            .como-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
 
-    .materiais-home-grid,
-    .mural-home-grid {
-        grid-template-columns: 1fr;
-    }
+            .materiais-home-grid,
+            .mural-home-grid {
+                grid-template-columns: 1fr;
+            }
 
-    .hero-floating {
-        display: none;
-    }
-}
+            .hero-floating {
+                display: none;
+            }
+        }
 
-@media (max-width: 600px) {
-    /* ... mantenha as outras regras ... */
+        @media (max-width: 600px) {
+            /* ... mantenha as outras regras ... */
 
-    .entrevista-player,
-    .material-home-preview {
-        height: 200px;
-    }
-}
+            .entrevista-player,
+            .material-home-preview {
+                height: 200px;
+            }
+        }
 
         /* =====================================================
            MURAL
@@ -572,16 +581,16 @@
         </div>
 
         <nav>
-    <a href="index.html">Início</a>
+            <a href="index.html">Início</a>
 
-    <a href="acolhimento.html">
-        Guia de Acolhimento 🎒
-    </a>
+            <a href="acolhimento.html">
+                Guia de Acolhimento 🎒
+            </a>
 
-    <a href="comunidade.html" class="nav-btn">
-        Fórum da Comunidade 💬
-    </a>
-</nav>
+            <a href="comunidade.html" class="nav-btn">
+                Fórum da Comunidade 💬
+            </a>
+        </nav>
     </header>
 
 
@@ -752,7 +761,7 @@
     </section>
 
 
-<!-- =====================================================
+    <!-- =====================================================
          ENTREVISTAS E MATERIAIS DA PESQUISA
          ===================================================== -->
 
@@ -776,19 +785,19 @@
         <div class="materiais-home-grid">
 
             <article class="material-home-card">
-    <!-- Player do YouTube incorporado -->
-    <div class="entrevista-player-wrapper" style="width:100%; height:240px; background:#0f172a;">
-        <iframe width="100%" height="240" src="" title="Entrevista com estudantes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display:block; border:0;"></iframe>
-    </div>
-    
-    <div class="material-home-info">
-        <h3>🎬 Entrevista com estudantes</h3>
-        <p>
-            Assista aos relatos e às experiências compartilhadas
-            pelos estudantes que participaram da pesquisa.
-        </p>
-    </div>
-</article>
+                <!-- Player do YouTube incorporado -->
+                <div class="entrevista-player-wrapper" style="width:100%; height:240px; background:#0f172a;">
+                    <iframe width="100%" height="240" src="" title="Entrevista com estudantes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display:block; border:0;"></iframe>
+                </div>
+
+                <div class="material-home-info">
+                    <h3>🎬 Entrevista com estudantes</h3>
+                    <p>
+                        Assista aos relatos e às experiências compartilhadas
+                        pelos estudantes que participaram da pesquisa.
+                    </p>
+                </div>
+            </article>
 
             <article class="material-home-card">
                 <div class="material-home-preview">
@@ -991,6 +1000,12 @@
 
     </div>
 
+
+    <!-- Firebase (banco de dados compartilhado) -->
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+    <script src="firebase-config.js"></script>
 
     <script src="script.js"></script>
 

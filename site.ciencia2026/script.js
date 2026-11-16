@@ -1,51 +1,94 @@
-const CHAVE_PERGUNTAS = "conexaoGlobalPerguntas";
+const ROTA_PERGUNTAS = "perguntas";
+
+let perguntasCache = [];
+
+let perguntaAtivaId = null;
+
+let ultimoEnvioPergunta = 0;
 
 
 // ========================================
-// CARREGAR PERGUNTAS
+// CARREGAR PERGUNTAS (do cache em memória)
 // ========================================
 
 function carregarPerguntas() {
 
-    try {
+    return perguntasCache;
 
-        return JSON.parse(
-            localStorage.getItem(CHAVE_PERGUNTAS)
-        ) || [];
+}
 
-    } catch (erro) {
 
-        return [];
+// ========================================
+// ESCUTAR PERGUNTAS NO FIREBASE (tempo real)
+// ========================================
+
+function iniciarPerguntas() {
+
+    if (!window.conexaoDB) {
+
+        renderizarPerguntas();
+
+        return;
 
     }
 
-}
+    window.conexaoDB
+        .ref(ROTA_PERGUNTAS)
+        .limitToLast(100)
+        .on(
+            "value",
+            snapshot => {
 
+                const lista = [];
 
-// ========================================
-// SALVAR PERGUNTAS
-// ========================================
+                snapshot.forEach(filho => {
 
-function salvarPerguntas(perguntas) {
+                    const dados = filho.val();
 
-    localStorage.setItem(
-        CHAVE_PERGUNTAS,
-        JSON.stringify(perguntas)
-    );
+                    if (!dados) return;
 
-}
+                    lista.push({
 
+                        id: filho.key,
 
-// ========================================
-// CRIAR ID
-// ========================================
+                        titulo: dados.titulo,
 
-function criarPerguntaId() {
+                        icone: dados.icone,
 
-    return (
-        Date.now().toString(36) +
-        Math.random().toString(36).slice(2, 7)
-    );
+                        respostas: [
+
+                            {
+
+                                texto: dados.texto,
+
+                                autor: dados.autor
+
+                            }
+
+                        ]
+
+                    });
+
+                });
+
+                perguntasCache = lista;
+
+                renderizarPerguntas();
+
+            },
+            erro => {
+
+                console.error(
+                    "Erro ao carregar perguntas:",
+                    erro
+                );
+
+                perguntasCache = [];
+
+                renderizarPerguntas();
+
+            }
+        );
 
 }
 
@@ -89,6 +132,8 @@ function mostrarResposta(id) {
 
     }
 
+
+    perguntaAtivaId = id;
 
     caixa.innerHTML = "";
 
@@ -229,22 +274,19 @@ function renderizarPerguntas() {
 
             lista.appendChild(botao);
 
-
-            // Primeira pergunta abre automaticamente
-
-            if (indice === 0) {
-
-                setTimeout(
-                    () => mostrarResposta(
-                        pergunta.id
-                    ),
-                    0
-                );
-
-            }
-
         }
     );
+
+
+    // Mantém aberta a pergunta que o visitante estava vendo
+    // (ou abre a primeira, se não houver nenhuma ativa)
+
+    const ativa =
+        perguntas.find(
+            item => item.id === perguntaAtivaId
+        ) || perguntas[0];
+
+    mostrarResposta(ativa.id);
 
 }
 
@@ -253,14 +295,10 @@ function renderizarPerguntas() {
 // REMOVER PERGUNTA
 // ========================================
 
-function removerPergunta(id) {
-
-    const perguntas =
-        carregarPerguntas();
-
+async function removerPergunta(id) {
 
     const pergunta =
-        perguntas.find(
+        perguntasCache.find(
             item => item.id === id
         );
 
@@ -277,18 +315,44 @@ function removerPergunta(id) {
     if (!confirmar) return;
 
 
-    const novasPerguntas =
-        perguntas.filter(
-            item => item.id !== id
-        );
+    if (!window.conexaoDB) {
+
+        alert("Não foi possível conectar ao servidor.");
+
+        return;
+
+    }
 
 
-    salvarPerguntas(
-        novasPerguntas
-    );
+    // Só o administrador (logado no Firebase) pode remover
+
+    const logado =
+        await window.conexaoAdminLogin();
 
 
-    renderizarPerguntas();
+    if (!logado) return;
+
+
+    try {
+
+        await window.conexaoDB
+            .ref(`${ROTA_PERGUNTAS}/${id}`)
+            .remove();
+
+
+        if (perguntaAtivaId === id) {
+
+            perguntaAtivaId = null;
+
+        }
+
+    } catch (erro) {
+
+        console.error(erro);
+
+        alert("Não foi possível remover a pergunta.");
+
+    }
 
 }
 
@@ -406,53 +470,67 @@ function publicarPergunta(event) {
     }
 
 
-    const perguntas =
-        carregarPerguntas();
+    if (!window.conexaoDB) {
+
+        alert("Não foi possível conectar ao servidor. Tente novamente.");
+
+        return;
+
+    }
 
 
-    const novaPergunta = {
+    // Evita envios em sequência (spam)
 
-        id: criarPerguntaId(),
+    const agora = Date.now();
 
-        titulo: titulo,
+    if (agora - ultimoEnvioPergunta < 5000) {
 
-        icone: icone,
+        alert("Aguarde alguns segundos antes de publicar outra pergunta.");
 
-        respostas: [
+        return;
 
-            {
+    }
 
-                texto: texto,
-
-                autor: autor
-
-            }
-
-        ]
-
-    };
+    ultimoEnvioPergunta = agora;
 
 
-    perguntas.push(
-        novaPergunta
-    );
+    const referencia =
+        window.conexaoDB
+            .ref(ROTA_PERGUNTAS)
+            .push();
 
 
-    salvarPerguntas(
-        perguntas
-    );
+    // A pergunta criada será aberta automaticamente
+
+    perguntaAtivaId = referencia.key;
+
+
+    referencia
+        .set({
+
+            titulo: titulo.slice(0, 70),
+
+            icone: icone,
+
+            texto: texto.slice(0, 500),
+
+            autor: autor.slice(0, 50),
+
+            ts: firebase.database.ServerValue.TIMESTAMP
+
+        })
+        .catch(erro => {
+
+            console.error(erro);
+
+            ultimoEnvioPergunta = 0;
+
+            alert("Não foi possível publicar a pergunta. Tente novamente.");
+
+        });
 
 
     fecharFormulario();
-
-    renderizarPerguntas();
-
-
-    // Abre automaticamente a pergunta criada
-
-    mostrarResposta(
-        novaPergunta.id
-    );
 
 }
 
@@ -567,7 +645,7 @@ document.addEventListener(
 
         // Carrega perguntas salvas
 
-        renderizarPerguntas();
+        iniciarPerguntas();
 
     }
 );

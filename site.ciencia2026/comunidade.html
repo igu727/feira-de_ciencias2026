@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2C0FWNPRM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-E2C0FWNPRM');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -663,20 +672,19 @@
 
         <nav>
 
-    <a href="index.html">
-        Início
-    </a>
+            <a href="index.html">
+                Início
+            </a>
 
-    <a href="acolhimento.html">
-        Guia de Acolhimento 🎒
-    </a>
+            <a href="acolhimento.html">
+                Guia de Acolhimento 🎒
+            </a>
 
-    <a href="comunidade.html" class="nav-btn">
-        Fórum da Comunidade 💬
-    </a>
+            <a href="comunidade.html" class="nav-btn">
+                Fórum da Comunidade 💬
+            </a>
 
-
-</nav>
+        </nav>
 
     </header>
 
@@ -956,327 +964,13 @@
          JAVASCRIPT
          ========================================================= -->
 
-    <script>
-
-        const forumWindow =
-            document.getElementById("forumWindow");
-
-        const forumUserInput =
-            document.getElementById("forumUserInput");
-
-        const forumMsgInput =
-            document.getElementById("forumMsgInput");
-
-        const btnEnviarForum =
-            document.getElementById("btnEnviarForum");
-
-        const messageCounter =
-            document.getElementById("messageCounter");
-
-
-        const CHAVE_FORUM =
-            "robloxForumMessages";
-
-
-        /* =====================================================
-           CARREGAR MENSAGENS
-           ===================================================== */
-
-        function carregarMensagensForum() {
-
-            let mensagens = [];
-
-            try {
-
-                mensagens =
-                    JSON.parse(
-                        localStorage.getItem(CHAVE_FORUM)
-                    ) || [];
-
-            } catch {
-
-                mensagens = [];
-
-            }
-
-
-            mensagens.forEach(function(mensagem) {
-
-                adicionarNaTelaForum(
-                    mensagem.usuario,
-                    mensagem.texto
-                );
-
-            });
-
-
-            atualizarContador(mensagens.length);
-
-            rolarForumNoFim();
-
-        }
-
-
-        /* =====================================================
-           ADICIONAR MENSAGEM NA TELA
-           ===================================================== */
-
-        function adicionarNaTelaForum(usuario, texto) {
-
-            const novaLinha =
-                document.createElement("div");
-
-            novaLinha.className =
-                "forum-message";
-
-
-            const nome =
-                document.createElement("span");
-
-            nome.className =
-                "forum-user";
-
-            nome.textContent =
-                "@" + usuario;
-
-
-            const mensagem =
-                document.createElement("span");
-
-            mensagem.className =
-                "forum-text";
-
-            mensagem.textContent =
-                texto;
-
-
-            novaLinha.appendChild(nome);
-
-            novaLinha.appendChild(mensagem);
-
-            forumWindow.appendChild(novaLinha);
-
-        }
-
-
-        /* =====================================================
-           CONTADOR
-           ===================================================== */
-
-        function atualizarContador(total) {
-
-            if (total === 1) {
-
-                messageCounter.textContent =
-                    "💬 1 mensagem";
-
-            } else {
-
-                messageCounter.textContent =
-                    `💬 ${total} mensagens`;
-
-            }
-
-        }
-
-
-        /* =====================================================
-           ROLAR PARA O FINAL
-           ===================================================== */
-
-        function rolarForumNoFim() {
-
-            forumWindow.scrollTop =
-                forumWindow.scrollHeight;
-
-        }
-
-
-        /* =====================================================
-           ENVIAR MENSAGEM
-           ===================================================== */
-
-        function enviarMensagemForum() {
-
-            const usuario =
-                forumUserInput.value.trim() ||
-                "Anônimo";
-
-
-            const texto =
-                forumMsgInput.value.trim();
-
-
-            if (texto === "") {
-
-                forumMsgInput.focus();
-
-                return;
-
-            }
-
-
-            adicionarNaTelaForum(
-                usuario,
-                texto
-            );
-
-
-            let mensagens = [];
-
-            try {
-
-                mensagens =
-                    JSON.parse(
-                        localStorage.getItem(CHAVE_FORUM)
-                    ) || [];
-
-            } catch {
-
-                mensagens = [];
-
-            }
-
-
-            mensagens.push({
-
-                usuario: usuario,
-
-                texto: texto
-
-            });
-
-
-            localStorage.setItem(
-
-                CHAVE_FORUM,
-
-                JSON.stringify(mensagens)
-
-            );
-
-
-            atualizarContador(
-                mensagens.length
-            );
-
-
-            forumMsgInput.value = "";
-
-            forumMsgInput.focus();
-
-
-            rolarForumNoFim();
-
-        }
-
-
-        /* =====================================================
-           ENTER PARA ENVIAR
-           ===================================================== */
-
-        btnEnviarForum.addEventListener(
-            "click",
-            enviarMensagemForum
-        );
-
-
-        forumMsgInput.addEventListener(
-            "keypress",
-            function(event) {
-
-                if (event.key === "Enter") {
-
-                    enviarMensagemForum();
-
-                }
-
-            }
-        );
-
-
-        /* =====================================================
-           MODERAÇÃO
-           ===================================================== */
-
-        function limparConsoleSecreto() {
-
-            const confirmar =
-                confirm(
-                    "Deseja apagar todas as mensagens do fórum neste navegador?"
-                );
-
-
-            if (!confirmar) {
-
-                return;
-
-            }
-
-
-            const senha =
-                prompt(
-                    "Digite a senha de administrador:"
-                );
-
-
-            if (senha === "ciencia2026") {
-
-                localStorage.removeItem(
-                    CHAVE_FORUM
-                );
-
-
-                forumWindow.innerHTML = `
-
-                    <div class="system-message">
-
-                        <strong>🛡️ Sistema:</strong>
-
-                        <br>
-
-                        O histórico do fórum foi
-                        limpo pelo administrador.
-
-                    </div>
-
-                `;
-
-
-                atualizarContador(0);
-
-
-                alert(
-                    "Mensagens apagadas com sucesso!"
-                );
-
-            }
-
-            else if (senha !== null) {
-
-                alert(
-                    "Senha incorreta!"
-                );
-
-            }
-
-        }
-
-
-        /* =====================================================
-           INICIAR
-           ===================================================== */
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            function() {
-
-                carregarMensagensForum();
-
-            }
-        );
-
-    </script>
+    <!-- Firebase (banco de dados compartilhado) -->
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+    <script src="firebase-config.js"></script>
+
+    <script src="forum.js"></script>
 
 </body>
 </html>
