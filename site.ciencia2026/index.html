@@ -294,88 +294,156 @@
             letter-spacing: 0.04em;
         }
 
-        /* =====================================================
-           VÍDEOS
-           ===================================================== */
+/* =====================================================
+   ENTREVISTAS E MATERIAIS DA PESQUISA
+   ===================================================== */
 
-        .home-videos {
-            padding: 90px 20px;
-            background: #111827;
-        }
+.home-videos {
+    padding: 90px 20px;
+    background: #111827;
+}
 
-        .videos-home-grid {
-            max-width: 1050px;
-            margin: 40px auto 0;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 22px;
-        }
+.materiais-home-grid {
+    max-width: 1050px;
+    margin: 40px auto 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
 
-        .video-home-card {
-            overflow: hidden;
-            border-radius: 22px;
-            background: #1e293b;
-            border: 1px solid rgba(255,255,255,0.07);
-            transition: 0.25s ease;
-        }
+.material-home-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 22px;
+    background: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
 
-        .video-home-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(14,165,233,0.35);
-        }
+.material-home-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
 
-        .video-placeholder {
-            height: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            background:
-                radial-gradient(circle at 30% 30%, rgba(99,102,241,0.35), transparent 35%),
-                linear-gradient(135deg, #172554, #0f172a);
-        }
+/* Player de vídeo e área de preview (imagem/ícone) com altura padronizada */
+.entrevista-player,
+.material-home-preview {
+    width: 100%;
+    height: 240px;
+    background: #0f172a;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
 
-        .video-play {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.7rem;
-            padding-left: 4px;
-            background: rgba(255,255,255,0.12);
-            border: 1px solid rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px);
-        }
+.entrevista-player {
+    object-fit: cover;
+    display: block;
+}
 
-        .video-label {
-            position: absolute;
-            top: 16px;
-            left: 16px;
-            padding: 7px 10px;
-            border-radius: 8px;
-            background: rgba(0,0,0,0.45);
-            color: #cbd5e1;
-            font-size: 0.75rem;
-            font-weight: 700;
-        }
+.material-home-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 30% 30%, rgba(99, 102, 241, 0.22), transparent 45%),
+        linear-gradient(135deg, #172554, #0f172a);
+}
 
-        .video-home-info {
-            padding: 22px;
-        }
+.material-home-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+}
 
-        .video-home-info h3 {
-            color: #f8fafc;
-            margin: 0 0 8px;
-        }
+.material-home-card:hover .material-home-preview img {
+    transform: scale(1.04);
+}
 
-        .video-home-info p {
-            color: #94a3b8;
-            margin: 0;
-            line-height: 1.6;
-            font-size: 0.9rem;
-        }
+.material-home-icon {
+    width: 76px;
+    height: 76px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.3rem;
+    background: rgba(99, 102, 241, 0.14);
+    border: 1px solid rgba(99, 102, 241, 0.28);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+}
+
+/* Conteúdo textual do card */
+.material-home-info {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.material-home-info h3 {
+    color: #f8fafc;
+    font-size: 1.15rem;
+    margin: 0 0 10px;
+    line-height: 1.4;
+}
+
+.material-home-info p {
+    color: #94a3b8;
+    margin: 0 0 20px;
+    line-height: 1.65;
+    font-size: 0.92rem;
+    flex: 1; /* Empurra o botão sempre para o rodapé do card */
+}
+
+/* Botão/Link de ação */
+.material-home-link {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: 6px;
+    padding: 10px 16px;
+    border-radius: 12px;
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    color: #7dd3fc;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.material-home-link:hover {
+    background: rgba(56, 189, 248, 0.2);
+    color: #ffffff;
+    transform: translateX(3px);
+}
+
+@media (max-width: 850px) {
+    .como-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .materiais-home-grid,
+    .mural-home-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-floating {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    /* ... mantenha as outras regras ... */
+
+    .entrevista-player,
+    .material-home-preview {
+        height: 200px;
+    }
+}
 
         /* =====================================================
            MURAL
@@ -684,90 +752,101 @@
     </section>
 
 
-    <!-- =====================================================
-         VÍDEOS
+<!-- =====================================================
+         ENTREVISTAS E MATERIAIS DA PESQUISA
          ===================================================== -->
 
     <section id="videos" class="home-videos">
 
         <div class="section-header">
-
             <span class="badge">
-                🎥 HISTÓRIAS REAIS
+                🎥 PESQUISA E HISTÓRIAS REAIS
             </span>
 
             <h2>
-                Relatos em Vídeo
+                Entrevistas e Materiais da Pesquisa
             </h2>
 
             <p class="subtitle">
-                Entrevistas e experiências compartilhadas pelos
-                estudantes que fazem parte da nossa pesquisa.
+                Confira os relatos em vídeo, os gráficos e os documentos
+                produzidos a partir do levantamento com estudantes estrangeiros.
             </p>
-
         </div>
 
+        <div class="materiais-home-grid">
 
-        <div class="videos-home-grid">
+            <article class="material-home-card">
+    <div class="material-home-preview">
+        <div class="material-home-icon">🎬</div>
+    </div>
+    <div class="material-home-info">
+        <h3>🎬 Entrevista com estudantes</h3>
+        <p>
+            Assista aos relatos e às experiências compartilhadas
+            pelos estudantes que participaram da pesquisa.
+        </p>
+        <a class="material-home-link"
+           href="COLE_O_LINK_DO_DRIVE_AQUI"
+           target="_blank" rel="noopener">
+            Assistir vídeo no Drive ↗
+        </a>
+    </div>
+</article>
 
-            <div class="video-home-card">
-
-                <div class="video-placeholder">
-
-                    <span class="video-label">
-                        🎬 ENTREVISTA 01
-                    </span>
-
-                    <div class="video-play">
-                        ▶️
-                    </div>
-
+            <article class="material-home-card">
+                <div class="material-home-preview">
+                    <img src="assets/Sales Pie Chart Graph.png"
+                         alt="Gráfico de nacionalidades dos estudantes entrevistados">
                 </div>
-
-                <div class="video-home-info">
-
-                    <h3>
-                        Primeiras impressões
-                    </h3>
-
+                <div class="material-home-info">
+                    <h3>📊 Gráfico de nacionalidades</h3>
                     <p>
-                        Como é chegar a um novo país, conhecer
-                        uma nova escola e começar uma nova rotina?
+                        Visualização da distribuição dos participantes:
+                        venezuelanos, cubanos e haitianos.
                     </p>
-
+                    <a class="material-home-link"
+                       href="assets/Sales Pie Chart Graph.png"
+                       target="_blank" rel="noopener">
+                        Visualizar imagem ↗
+                    </a>
                 </div>
+            </article>
 
-            </div>
-
-
-            <div class="video-home-card">
-
-                <div class="video-placeholder">
-
-                    <span class="video-label">
-                        ✨ ENTREVISTA 02
-                    </span>
-
-                    <div class="video-play">
-                        ▶️
-                    </div>
-
+            <article class="material-home-card">
+                <div class="material-home-preview">
+                    <div class="material-home-icon">📄</div>
                 </div>
-
-                <div class="video-home-info">
-
-                    <h3>
-                        Superando barreiras
-                    </h3>
-
+                <div class="material-home-info">
+                    <h3>Análise dos dados — estudantes estrangeiros</h3>
                     <p>
-                        Histórias sobre comunicação, amizades
-                        e adaptação ao ambiente escolar.
+                        Documento com a análise da participação no levantamento,
+                        das nacionalidades e da fluência na língua portuguesa.
                     </p>
-
+                    <a class="material-home-link"
+                       href="assets/analise_dados_estrangeiros_EEB_Joao_Silveira.pdf.pdf"
+                       target="_blank" rel="noopener">
+                        Abrir PDF ↗
+                    </a>
                 </div>
+            </article>
 
-            </div>
+            <article class="material-home-card">
+                <div class="material-home-preview">
+                    <div class="material-home-icon">📚</div>
+                </div>
+                <div class="material-home-info">
+                    <h3>Gráficos sobre estudantes imigrantes</h3>
+                    <p>
+                        Material com os resultados sobre a quantidade de idiomas
+                        falados ou compreendidos e o tempo de residência no Brasil.
+                    </p>
+                    <a class="material-home-link"
+                       href="assets/Gráficos sobre estudantes imigrantes – 11 Nov 2026, 11.48 am_20261111_114921_0000.pdf"
+                       target="_blank" rel="noopener">
+                        Abrir PDF ↗
+                    </a>
+                </div>
+            </article>
 
         </div>
 
